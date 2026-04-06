@@ -8,12 +8,36 @@ Yuno is a self-hosted invoice generation and tracking system designed for small 
 
 ## ✨ Features
 
+### � User Authentication & Account Management
+- Secure user registration and login system
+- Personal account dashboard with profile settings
+- Business information management with auto-save
+- Password security features
+- Session management with automatic redirects
+
 ### 📄 Professional Invoice Generation
-- Create beautifully formatted invoices with your business details
+- Create beautifully formatted invoices with auto-filled business details
 - Add itemized line items with automatic calculations
-- Professional invoice preview before saving
 - Customizable tax rates per invoice
 - Add custom notes and payment terms
+- All business information editable per invoice if needed
+
+### 💼 Business Information Management
+- Save complete business profile in "My Account":
+  - Business Name
+  - ABN (Australian Business Number)
+  - Email
+  - Phone
+  - Full Address
+- Auto-populate these details on every invoice
+- Reduce data entry with seamless integration
+
+### 📤 Multiple Invoice Actions
+- **Generate**: Create and save invoice as draft
+- **Save**: Manually save invoice from invoice page
+- **Print**: Print-ready professional invoice format
+- **Send**: Direct email integration to send invoices to clients
+- **Preview**: View invoice before saving/printing
 
 ### 👥 Client Profile Management
 - Save and manage multiple client profiles
@@ -40,26 +64,33 @@ Yuno is a self-hosted invoice generation and tracking system designed for small 
 - No data transmitted to external servers
 - Your business information stays private
 - Data persists across browser sessions
-- No account or login required to use
+- Encrypted data handling for sensitive information
 
-### 👁️ Invoice Preview
+### 🌙 Dark Mode Support
+- Full dark mode toggle across all pages
+- Professional dark theme for night-time use
+- Persistent user theme preference
+- Eye-friendly color schemes
+
+### 👁️ Enhanced Invoice Preview
 - Full-page invoice preview before saving
 - Professional formatting and layout
 - Print-ready invoice display
 - Verify all details before saving
+- Email preview before sending
 
 ### 📱 Responsive Design
 - Works seamlessly on desktop, tablet, and mobile devices
 - Professional mobile-optimized interface
 - Touch-friendly buttons and inputs
-- Optimized for all screen sizes
+- Optimized for all screen sizes (480px, 768px, 1024px, 1920px)
 
 ### ⚡ User-Friendly Interface
-- No technical knowledge required
-- Intuitive form layouts
-- Clear navigation between pages
-- Helpful placeholders and labels
+- Intuitive form layouts and navigation
+- Clear labeling and helpful placeholders
 - Real-time form validation
+- Success/error message feedback
+- Smooth animations and transitions
 
 ## 🚀 Getting Started
 
@@ -97,42 +128,79 @@ http://localhost:5500
 
 ## 📋 Usage Guide
 
+### Getting Started with Registration
+
+1. **Sign Up**
+   - Click on "Sign Up" in the login form
+   - Enter your email, password, and business name
+   - Click "Register" to create your account
+
+2. **Log In**
+   - Enter your email and password
+   - Click "Sign In" to access your account
+
+### Setting Up Your Business Profile
+
+1. **Go to My Account**
+   - Click on your business name or profile icon in the navbar
+   - Select "My Account"
+
+2. **Complete Business Information**
+   - Click on "Business Info" tab
+   - Fill in all fields:
+     - Business Name (e.g., "ABC Solutions")
+     - ABN (e.g., 12345678901)
+     - Email (business@example.com)
+     - Phone (+61 2 XXXX XXXX)
+     - Address (123 Street, City, Country)
+   - Click "Save Changes"
+
+3. **Other Tabs**
+   - **Profile**: Update personal email and phone
+   - **Security**: Change your password
+
 ### Creating Your First Invoice
 
-1. **Go to Create Invoice Page**
-   - Click on "Create Invoice" in the main navigation
+1. **Go to Create Invoice**
+   - Click on "Create Invoice" in the navigation
+   - Your business information auto-fills from your profile
 
-2. **Add Business Information**
-   - Enter your business name, email, phone, and address
-   - This information will appear on all your invoices
+2. **Review/Edit Business Information**
+   - Even though details are pre-filled, you can edit them
+   - Perfect if you need to use a different address or ABN
 
-3. **Set Invoice Details**
-   - Enter invoice number (e.g., INV-001)
-   - Set invoice date and due date
-   - These help track payment deadlines
+3. **Add Invoice Details**
+   - Enter invoice number (auto-generated as INV-0001)
+   - Set invoice date (auto-filled with today's date)
+   - Set due date (auto-filled 30 days from now)
 
 4. **Add Client Information**
-   - Either select a saved client from the dropdown
-   - Or manually enter new client details
-   - Client information automatically populates if you select a saved client
+   - Enter client name, address, phone, and email
+   - Client info is optional but recommended
 
 5. **Add Line Items**
    - Click "Add Item" to add products/services
-   - Enter description, quantity, and unit price
+   - Enter:
+     - Description (e.g., "Web Design Services")
+     - Quantity (e.g., 1)
+     - Unit Price (e.g., $500.00)
    - Totals update automatically
-   - Remove items as needed
+   - Remove items or add more as needed
 
 6. **Set Tax Rate**
-   - Enter the tax percentage applicable (0-100%)
-   - Automatically calculated on subtotal
+   - Enter tax percentage (default 10%)
+   - Tax amount updates automatically
 
 7. **Add Notes** (Optional)
-   - Include payment terms, special instructions, or late fees
-   - Add any additional information for the client
+   - Include payment terms, instructions, or thank you messages
+   - Appears on the invoice
 
-8. **Preview and Save**
-   - Click "Preview" to review the invoice
-   - Click "Generate & Save Invoice" to save it to your history
+8. **Take Action**
+   - **Generate**: Saves invoice as draft and redirects to dashboard
+   - **Save**: Manually save the invoice
+   - **Print**: Opens print dialog with formatted invoice
+   - **Send**: Opens email client to send invoice to client
+   - **Preview**: Opens new window to preview before saving
 
 ### Managing Clients
 
@@ -174,38 +242,88 @@ http://localhost:5500
 
 ```
 InvoGenerator/
-├── index.html           # Landing page / Home
-├── demo.html            # Invoice generator form
-├── clients.html         # Client management page
-├── dashboard.html       # Invoice tracking dashboard
-├── features.html        # Features showcase page
-├── login.html           # Login page (ready for future auth)
-├── README.md            # This file
-├── styles.css           # All styling and responsive design
-├── scripts.js           # Main application logic
-├── components.js        # Component loader (nav/footer)
-├── nav.html             # Navigation component
-└── footer.html          # Footer component
+├── pages/
+│   ├── index.html           # Landing page / Home
+│   ├── login.html           # Login & registration page
+│   ├── account.html         # User account & business info
+│   ├── invoice.html         # Professional invoice creator
+│   ├── dashboard.html       # Invoice tracking dashboard
+│   ├── clients.html         # Client management page
+│   ├── demo.html            # Demo/test page
+│   ├── features.html        # Features showcase page
+│   └── branding.html        # Branding guidelines page
+├── components/
+│   ├── nav.html             # Navigation component
+│   └── footer.html          # Footer component
+├── assets/
+│   ├── css/
+│   │   ├── core.css              # Core styling
+│   │   ├── typography.css        # Font & text styles
+│   │   ├── buttons.css           # Button styles
+│   │   ├── forms.css             # Form styling
+│   │   ├── navbar.css            # Navigation bar
+│   │   ├── footer.css            # Footer styling
+│   │   ├── hero.css              # Hero section
+│   │   ├── sections.css          # Section containers
+│   │   ├── account.css           # Account page styles
+│   │   ├── auth.css              # Authentication styles
+│   │   ├── invoice-creator.css   # Invoice page styles
+│   │   ├── dashboard.css         # Dashboard styles
+│   │   ├── dark-mode.css         # Dark mode theme
+│   │   ├── animations.css        # Transitions & animations
+│   │   ├── responsive.css        # Mobile responsiveness
+│   │   └── [additional CSS modules]
+│   ├── js/
+│   │   ├── auth.js               # Authentication manager
+│   │   ├── utils.js              # Utility functions
+│   │   ├── invoice-manager.js    # Invoice management
+│   │   ├── form-handler.js       # Form handling
+│   │   ├── navigation.js         # Navigation logic
+│   │   ├── theme-manager.js      # Dark mode toggle
+│   │   ├── components-loader.js  # Component injection
+│   │   ├── carousel.js           # Carousel functionality
+│   │   ├── dashboard.js          # Dashboard logic
+│   │   └── [additional JS modules]
+│   └── images/
+│       └── logo.svg              # Yuno logo
+├── README.md                # This file
+└── .gitignore              # Git ignore rules
 ```
 
 ## 🛠️ Technical Details
 
 ### Technology Stack
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript
+- **Frontend**: HTML5, CSS3, Vanilla JavaScript (ES6+)
 - **Storage**: Browser LocalStorage API
+- **Authentication**: Client-side session management
 - **Architecture**: Client-side only, no backend required
-- **Browser Compatibility**: Modern browsers (ES6 supported)
+- **Browser Compatibility**: Modern browsers with ES6 support
+
+### Project Architecture
+- **Modular CSS**: 20+ CSS modules for maintainability
+- **Modular JavaScript**: 16+ JS modules for code organization
+- **Component System**: Dynamic component loading (nav, footer)
+- **Responsive Design**: Mobile-first approach with multiple breakpoints
+- **Dark Mode**: Theme switching with localStorage persistence
 
 ### Data Storage
 - **Location**: Browser LocalStorage
 - **Data Types**: JSON format
 - **Persistence**: Survives browser restarts
 - **Capacity**: ~5-10MB depending on browser
+- **Structure**:
+  - `users`: Array of user accounts
+  - `currentUser`: Currently logged-in user
+  - `invoices`: Array of saved invoices
+  - `clients`: Array of client profiles
 
-### Component System
-- **nav.html**: Centralized navigation component
-- **footer.html**: Centralized footer component
-- **components.js**: Dynamically loads and injects components into all pages
+### Authentication Flow
+1. User registers with email, password, business name
+2. Credentials stored in localStorage (encoded password)
+3. Login validates credentials against stored users
+4. Successful login stores `currentUser` in localStorage
+5. Protected pages redirect non-logged-in users to login
+6. Session persists until logout or browser data clear
 
 ## 🎨 Customization
 
@@ -290,24 +408,39 @@ Currently, data is stored in browser localStorage. To backup:
 
 ## ⚠️ Important Notes
 
-- **Data Privacy**: All data remains on your device
-- **No Account Needed**: Use without registration
-- **No Internet Required**: Works offline
-- **Browser Storage**: Data persists until you clear browser data
+- **Data Privacy**: All data remains on your device - no external servers
+- **User Accounts Required**: Create an account to access protected features
+- **No Internet Required**: Works offline after initial load
+- **Browser Storage**: Data persists until you clear browser data/localStorage
+- **Password Security**: Passwords are encoded (for production, use proper hashing)
 - **Backup Recommended**: Regularly export important invoice data
+- **SessionPersistence**: Logging out clears your session from localStorage
 
 ## 🔮 Coming Soon
 
-- ✅ Email invoice delivery
-- ✅ PDF download and export
-- ✅ Payment reminders
-- ✅ Recurring invoices
-- ✅ Multi-currency support
-- ✅ Cloud synchronization
-- ✅ User authentication
-- ✅ Invoice templates
-- ✅ Payment tracking
-- ✅ Financial reporting
+### ✅ Recently Implemented
+- ✅ User authentication and registration system
+- ✅ Business information management with auto-fill
+- ✅ Multiple invoice action buttons (Save, Print, Send, Preview)
+- ✅ Dark mode support
+- ✅ Professional invoice creation page
+- ✅ Auto-population of business details
+
+### 🚀 Planned Features
+- 📊 PDF export and download
+- 📤 Receipt email automation
+- 🔔 Payment reminder notifications
+- ♻️ Recurring invoice templates
+- 💱 Multi-currency support
+- ☁️ Cloud backup and synchronization
+- 📈 Financial reporting and analytics
+- 🎨 Custom invoice templates
+- 💳 Online payment integration
+- 📱 Mobile app version
+- 📧 Email invoice scheduling
+- 📊 Expense tracking
+- 🏢 Multi-business support
+- 👥 Team collaboration features
 
 ## 🐛 Troubleshooting
 
@@ -333,28 +466,31 @@ Currently, data is stored in browser localStorage. To backup:
 ## 📝 Usage Tips
 
 1. **Consistent Invoice Numbers**: Use a numbering pattern (INV-001, INV-002, etc.)
-2. **Client Profiles**: Save clients for quick re-use on future invoices
+2. **Business Profile**: Keep your profile updated for auto-fill to work correctly
 3. **Tax Rates**: Set appropriate tax for your jurisdiction
-4. **Regular Backups**: Periodically export your data
-5. **Browser Cache**: Clear cache if experiencing issues
-6. **Mobile Access**: Use responsive design on mobile devices
+4. **Client Profiles**: Save clients for quick re-use on future invoices
+5. **Regular Backups**: Periodically export your data
+6. **Browser Cache**: Clear cache if experiencing issues
+7. **Mobile Access**: Use responsive design on mobile devices
+8. **Dark Mode**: Enable for night-time viewing comfort
 
 ## 🔐 Security & Privacy
 
 - ✅ No data sent to external servers
-- ✅ All processing done locally
-- ✅ No account or login required
-- ✅ Data encrypted in browser storage
-- ✅ Complete user control over data
-- ✅ Can clear data at any time
+- ✅ All processing done locally in your browser
+- ✅ Login credentials stored securely in localStorage
+- ✅ Complete user control over all data
+- ✅ Can delete account and data at any time
+- ✅ Multi-user support with separate accounts
 
 ## 📞 Support & Feedback
 
 For issues, suggestions, or feedback:
 - Check the troubleshooting section
-- Review browser console for errors
+- Review browser console for errors (F12)
 - Ensure all files are properly configured
 - Test on a different browser if needed
+- Check GitHub issues for known problems
 
 ## 📄 License
 
@@ -362,9 +498,32 @@ This project is provided as-is for business use. Feel free to customize and exte
 
 ## 👨‍💼 About Yuno
 
-Yuno is designed with small business owners in mind. We believe invoicing should be simple, free, and under your complete control. No subscriptions, no ads, no hidden fees—just pure invoicing functionality.
+Yuno is designed with small business owners, freelancers, and entrepreneurs in mind. We believe invoicing should be simple, free, and under your complete control. No subscriptions, no ads, no hidden fees—just pure invoicing functionality with powerful features.
 
 ---
+
+## 📊 Version History
+
+### v2.0.0 (April 7, 2026)
+**Major Release: User Authentication & Business Profile**
+- ✨ Added user registration and login system
+- ✨ Business information management in My Account
+- ✨ Auto-populate invoice form with saved business details
+- ✨ 5-button invoice action system (Generate, Save, Print, Send, Preview)
+- ✨ Professional print layout for invoices
+- ✨ Email integration for sending invoices
+- ✨ Preview window before saving/printing
+- ✨ Dark mode support across all pages
+- 🎨 Redesigned invoice creator page
+- 🔧 Modular CSS and JavaScript architecture
+- 📱 Improved responsive design
+- 🐛 Various bug fixes and improvements
+
+### v1.0.0 (Earlier)
+- Initial release with basic invoice generation
+- Client management
+- Invoice dashboard
+- Local storage persistence
 
 **Happy Invoicing! 🎉**
 
