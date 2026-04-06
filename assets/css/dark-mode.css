@@ -1,0 +1,560 @@
+/**
+ * YUNO Invoice Generator - Dark Mode CSS Module (COMPREHENSIVE)
+ * Purpose: Complete dark mode styling overrides for ALL components
+ * Applies to: All pages (when body.dark-mode class is applied)
+ * Last updated: 2026-04-07
+ * Note: This module provides comprehensive dark mode support across the entire website
+ */
+
+/* ============ GLOBAL DARK MODE ============ */
+body.dark-mode {
+    background-color: #0a0a14 !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode main {
+    background-color: #0a0a14 !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .container {
+    background-color: #0a0a14 !important;
+}
+
+/* ============ NAVBAR DARK MODE ============ */
+body.dark-mode #topNav {
+    background: #0f0f1e !important;
+    color: #ffffff !important;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.2) !important;
+}
+
+body.dark-mode #topNav h1,
+body.dark-mode #topNav h2 {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+body.dark-mode #navMenu a {
+    color: #ffffff !important;
+}
+
+body.dark-mode #navMenu a:hover {
+    color: #00d4ff !important;
+}
+
+body.dark-mode #navMenu a[href*="dashboard"] {
+    color: #ffffff !important;
+    border-bottom: 2px solid transparent !important;
+}
+
+body.dark-mode #navMenu a[href*="dashboard"]:hover {
+    color: #00d4ff !important;
+    border-bottom-color: #00d4ff !important;
+}
+
+body.dark-mode #navMenu a[href*="login"],
+body.dark-mode #navMenu a[href*="Sign In"] {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%) !important;
+    color: #0a0a14 !important;
+}
+
+body.dark-mode #navMenu button {
+    background: #e74c3c !important;
+    color: white !important;
+}
+
+body.dark-mode #themeToggle {
+    color: #ffffff !important;
+    transition: all 0.3s ease !important;
+}
+
+body.dark-mode #themeToggle:hover {
+    color: #00d4ff !important;
+    transform: rotate(20deg) !important;
+}
+
+body.dark-mode nav {
+    background: linear-gradient(135deg, rgba(20, 20, 40, 0.98) 0%, rgba(40, 35, 80, 0.95) 100%) !important;
+    border-bottom-color: rgba(124, 58, 237, 0.15) !important;
+}
+
+body.dark-mode .nav-link {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-mode .nav-link:hover {
+    color: #fff !important;
+    background: rgba(124, 58, 237, 0.25) !important;
+    border-color: rgba(124, 58, 237, 0.6) !important;
+}
+
+body.dark-mode .theme-toggle {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-color: rgba(124, 58, 237, 0.6) !important;
+}
+
+/* ============ TEXT & HEADINGS DARK MODE ============ */
+body.dark-mode p,
+body.dark-mode small,
+body.dark-mode em,
+body.dark-mode li,
+body.dark-mode label,
+body.dark-mode span,
+body.dark-mode div {
+    color: inherit !important;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: #ffffff !important;
+}
+
+body.dark-mode h2 {
+    border-bottom-color: #00d4ff !important;
+}
+
+body.dark-mode h3 {
+    color: #00d4ff !important;
+}
+
+body.dark-mode a {
+    color: #00d4ff !important;
+}
+
+body.dark-mode a:hover {
+    color: #00ecff !important;
+}
+
+/* ============ FORMS DARK MODE ============ */
+body.dark-mode .form-group label {
+    color: #ffffff !important;
+}
+
+body.dark-mode input[type="text"],
+body.dark-mode input[type="email"],
+body.dark-mode input[type="number"],
+body.dark-mode input[type="date"],
+body.dark-mode input[type="tel"],
+body.dark-mode input[type="password"],
+body.dark-mode textarea,
+body.dark-mode select {
+    background-color: rgba(10, 10, 20, 0.7) !important;
+    color: #ffffff !important;
+    border-color: rgba(0, 212, 255, 0.2) !important;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+body.dark-mode input:focus,
+body.dark-mode textarea:focus,
+body.dark-mode select:focus {
+    border-color: #00d4ff !important;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.4) !important;
+    background-color: rgba(0, 212, 255, 0.05) !important;
+}
+
+body.dark-mode .form-section {
+    border-bottom-color: rgba(0, 212, 255, 0.2) !important;
+}
+
+body.dark-mode .invoice-form {
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(0, 212, 255, 0.08) 100%) !important;
+    border-color: rgba(0, 212, 255, 0.3) !important;
+}
+
+body.dark-mode .invoice-form h3 {
+    color: #00d4ff !important;
+}
+
+/* ============ TABLES DARK MODE ============ */
+body.dark-mode table {
+    background-color: #1a1a2e !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode thead {
+    background-color: rgba(0, 212, 255, 0.15) !important;
+}
+
+body.dark-mode th {
+    color: #00d4ff !important;
+    background-color: rgba(0, 212, 255, 0.15) !important;
+}
+
+body.dark-mode td {
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-mode tbody tr:hover {
+    background-color: rgba(0, 212, 255, 0.05) !important;
+}
+
+body.dark-mode .items-table thead {
+    background: rgba(0, 212, 255, 0.15) !important;
+}
+
+body.dark-mode .items-table th {
+    color: #00d4ff !important;
+}
+
+body.dark-mode .dashboard-table thead {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.1) 100%) !important;
+}
+
+/* ============ BUTTONS DARK MODE ============ */
+body.dark-mode .btn-primary,
+body.dark-mode button[type="submit"] {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%) !important;
+    color: #0a0a14 !important;
+}
+
+body.dark-mode .btn-primary:hover,
+body.dark-mode button[type="submit"]:hover {
+    box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3) !important;
+}
+
+body.dark-mode .btn-secondary {
+    background-color: rgba(0, 212, 255, 0.15) !important;
+    color: #00d4ff !important;
+    border-color: #00d4ff !important;
+}
+
+body.dark-mode .btn-secondary:hover {
+    background-color: rgba(0, 212, 255, 0.25) !important;
+}
+
+body.dark-mode .btn {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 212, 255, 0.1)) !important;
+}
+
+body.dark-mode .btn:hover {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(0, 212, 255, 0.2)) !important;
+}
+
+/* ============ MODALS & CARDS DARK MODE ============ */
+body.dark-mode .modal-content {
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(0, 212, 255, 0.05) 100%) !important;
+    border: 2px solid rgba(0, 212, 255, 0.2) !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .card,
+body.dark-mode .form-group {
+    background-color: #1a1a2e !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .graphic-card {
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.6) 0%, rgba(15, 15, 30, 0.8) 100%) !important;
+    border: 2px solid rgba(0, 212, 255, 0.2) !important;
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+body.dark-mode .feature-card,
+body.dark-mode .step-card {
+    background: #1a1a2e !important;
+    box-shadow: 0 5px 20px rgba(0, 212, 255, 0.1) !important;
+}
+
+body.dark-mode .feature-card h3,
+body.dark-mode .step-card h3 {
+    color: #00d4ff !important;
+}
+
+body.dark-mode .graphic-header {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: #00d4ff !important;
+}
+
+body.dark-mode .graphic-item {
+    background: linear-gradient(135deg, rgba(30, 30, 50, 0.9) 0%, rgba(25, 25, 45, 0.9) 100%) !important;
+    color: #ffffff !important;
+    border: 2px solid rgba(0, 212, 255, 0.15) !important;
+    box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1) !important;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+body.dark-mode .graphic-item:hover {
+    border-color: rgba(0, 212, 255, 0.5) !important;
+    box-shadow: 0 15px 50px rgba(0, 212, 255, 0.25) !important;
+    background: linear-gradient(135deg, rgba(35, 35, 55, 0.95) 0%, rgba(30, 30, 50, 0.95) 100%) !important;
+}
+
+body.dark-mode .graphic-total {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 153, 204, 0.15) 100%) !important;
+    border: 2px solid rgba(0, 212, 255, 0.4) !important;
+    color: #00d4ff !important;
+    box-shadow: 0 15px 50px rgba(0, 212, 255, 0.2) !important;
+}
+
+body.dark-mode .graphic-total:hover {
+    box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3) !important;
+    border-color: rgba(0, 212, 255, 0.6) !important;
+}
+
+/* ============ SECTIONS DARK MODE ============ */
+body.dark-mode section {
+    background-color: #0a0a14 !important;
+}
+
+body.dark-mode .stats-section {
+    background-color: #0a0a14 !important;
+}
+
+body.dark-mode .stat-item {
+    background-color: #1a1a2e !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .feature-grid {
+    background-color: #0a0a14 !important;
+}
+
+body.dark-mode .features-grid {
+    background-color: #0a0a14 !important;
+}
+
+body.dark-mode .feature-list {
+    background-color: #1a1a2e !important;
+}
+
+body.dark-mode .feature-list li {
+    color: #ffffff !important;
+}
+
+body.dark-mode .form-section {
+    background-color: #0a0a14 !important;
+}
+
+body.dark-mode .invoice-preview {
+    background-color: #1a1a2e !important;
+    color: #ffffff !important;
+}
+
+/* ============ HERO SECTION DARK MODE ============ */
+body.dark-mode header:not(.hero-header) {
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(10, 10, 20, 0.9) 50%, rgba(0, 212, 255, 0.05) 100%) !important;
+    border-bottom-color: rgba(0, 212, 255, 0.3) !important;
+}
+
+body.dark-mode header.hero-header {
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(10, 10, 20, 0.9) 50%, rgba(0, 212, 255, 0.05) 100%) !important;
+    border-bottom: 2px solid rgba(0, 212, 255, 0.2) !important;
+    box-shadow: none !important;
+}
+
+body.dark-mode header.hero-header > .hero-graphic {
+    background: transparent !important;
+}
+
+body.dark-mode .logo-tagline {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+body.dark-mode .hero-subtitle {
+    color: #ffffff !important;
+}
+
+body.dark-mode .hero-description {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+body.dark-mode header p {
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode .btn-hero-secondary {
+    background: rgba(0, 212, 255, 0.15) !important;
+    color: #00d4ff !important;
+    border: 2px solid #00d4ff !important;
+}
+
+/* ============ CTA & BOXES DARK MODE ============ */
+body.dark-mode .cta-box {
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(0, 212, 255, 0.1) 100%) !important;
+    color: #ffffff !important;
+    border: 2px solid rgba(0, 212, 255, 0.2) !important;
+}
+
+body.dark-mode .cta-box h3 {
+    color: #00d4ff !important;
+}
+
+body.dark-mode .cta-box p {
+    color: #e0e0e0 !important;
+}
+
+body. dark-mode .cta-button {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%) !important;
+    color: #0a0a14 !important;
+    border: none !important;
+}
+
+body.dark-mode .cta-button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3) !important;
+}
+
+body.dark-mode .cta-button.secondary {
+    background: rgba(0, 212, 255, 0.2) !important;
+    color: #00d4ff !important;
+    border: 2px solid #00d4ff !important;
+}
+
+/* ============ BENEFITS & TESTIMONIALS DARK MODE ============ */
+body.dark-mode .benefits-section {
+    background-color: #0a0a14 !important;
+}
+
+body.dark-mode .benefits-section h2 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .benefits-section [style*="background: #f8f9fa"],
+body.dark-mode .benefits-section [style*="background-color: #f8f9fa"] {
+    background: #1a1a2e !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .benefits-section p[style*="color: #666"],
+body.dark-mode .benefits-section p[style*="color: #2c3e50"] {
+    color: #ffffff !important;
+}
+
+/* ============ SECTION TITLES DARK MODE ============ */
+body.dark-mode .section-title {
+    color: #ffffff !important;
+}
+
+body.dark-mode .section-title::after {
+    background: linear-gradient(90deg, #00d4ff 0%, #0099cc 100%) !important;
+}
+
+/* ============ VISITOR BANNER DARK MODE ============ */
+body.dark-mode #visitorBanner {
+    background: rgba(0, 212, 255, 0.15) !important;
+    border-color: #00d4ff !important;
+}
+
+body.dark-mode #visitorBanner,
+body.dark-mode #visitorBanner strong,
+body.dark-mode #visitorBanner span {
+    color: #00d4ff !important;
+}
+
+body.dark-mode #visitorBanner a {
+    color: #00d4ff !important;
+    text-decoration: underline !important;
+}
+
+/* ============ INVOICE DOCUMENT DARK MODE ============ */
+body.dark-mode .invoice-document {
+    background: #1a1a2e !important;
+    border: 2px solid rgba(0, 212, 255, 0.2) !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .invoice-section {
+    background: rgba(0, 212, 255, 0.05) !important;
+    border-left-color: #00d4ff !important;
+}
+
+/* ============ FOOTER DARK MODE ============ */
+body.dark-mode footer {
+    background-color: rgba(20, 20, 40, 0.95) !important;
+    color: #b0b0c0 !important;
+    border-top-color: rgba(124, 58, 237, 0.2) !important;
+}
+
+body.dark-mode main > .container > h2 {
+    color: #00d4ff !important;
+    font-size: 2rem !important;
+    margin-bottom: 2rem !important;
+}
+
+/* ============ UTILITY CATCH-ALL DARK MODE ============ */
+body.dark-mode [style*="background: white"],
+body.dark-mode [style*="background-color: white"],
+body.dark-mode [style*="background-color: #fff"],
+body.dark-mode [style*="background: #fff"],
+body.dark-mode [style*="background-color: #ffffff"],
+body.dark-mode [style*="background: #ffffff"] {
+    background-color: #1a1a2e !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .content,
+body.dark-mode .wrapper,
+body.dark-mode .box,
+body.dark-mode .panel,
+body.dark-mode .item,
+body.dark-mode .listing,
+body.dark-mode .result,
+body.dark-mode .product,
+body.dark-mode .shop-item,
+body.dark-mode .gallery-item,
+body.dark-mode .event-card,
+body.dark-mode .info-box,
+body.dark-mode .highlight {
+    background-color: #1a1a2e !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .invoice-document,
+body.dark-mode .preview,
+body.dark-mode .details,
+body.dark-mode .sidebar,
+body.dark-mode .hero-graphic,
+body.dark-mode .dashboard,
+body.dark-mode .list-container,
+body.dark-mode .clients-list,
+body.dark-mode .invoice-list {
+    background-color: #1a1a2e !important;
+    color: #ffffff !important;
+}
+
+/* ============ STEP CARD DARK MODE ============ */
+body.dark-mode .step-card {
+    background: #1a1a2e !important;
+    box-shadow: 0 5px 20px rgba(0, 212, 255, 0.1) !important;
+}
+
+body.dark-mode .step-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2) !important;
+}
+
+body.dark-mode .step-number {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%) !important;
+    color: #0a0a14 !important;
+}
+
+body.dark-mode .step-icon {
+    filter: brightness(1.2) !important;
+}
+
+/* ============ HOW IT WORKS DARK MODE ============ */
+body.dark-mode .how-it-works {
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.5) 0%, rgba(0, 212, 255, 0.1) 100%) !important;
+}

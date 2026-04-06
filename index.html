@@ -3,31 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuno - Invoice Generator</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Yuno - Professional Invoice Generator</title>
+    <link rel="icon" href="assets/images/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/css/core.css">
+    <link rel="stylesheet" href="assets/css/typography.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/hero.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/buttons.css">
+    <link rel="stylesheet" href="assets/css/form-styles.css">
+    <link rel="stylesheet" href="assets/css/table-styles.css">
+    <link rel="stylesheet" href="assets/css/modal.css">
+    <link rel="stylesheet" href="assets/css/banner.css">
+    <link rel="stylesheet" href="assets/css/totals.css">
+    <link rel="stylesheet" href="assets/css/sections.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 <body>
-    <header>
-        <h1>Welcome to Yuno - Your Invoice Generator</h1>
-      
-    </header>
-
-    <nav>
-        <a href="demo.html"> Free Demo </a>
-        <a href="login.html"> Login </a>
-        <a href="features.html"> Features </a>
+    <!-- Top Navigation Bar -->
+    <nav id="topNav">
+        <div id="navBrand" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+            <img src="assets/images/logo.svg" alt="Yuno Logo" style="width: 40px; height: 40px; display: flex;" />
+            <h1 style="margin: 0; background: linear-gradient(135deg, #ffffff 0%, #00d4ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; font-size: 1.5rem; letter-spacing: 1px;">YUNO</h1>
+        </div>
+        <div id="navMenu"></div>
+        <button id="themeToggle" title="Toggle Dark Mode" style="background: none; border: none; cursor: pointer; font-size: 1.5rem; padding: 0.5rem; border-radius: 50%; hover-background: rgba(0,0,0,0.1); transition: all 0.3s ease;">
+            <span class="theme-icon">🌙</span>
+        </button>
     </nav>
 
+    <header class="hero-header">
+        <div class="hero-content">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#a855f7;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#db2777;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="grad3b" x1="100%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#db2777;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+                            </linearGradient>
+                            <filter id="glow3">
+                                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <circle cx="100" cy="100" r="95" fill="white" stroke="url(#grad3)" stroke-width="2"/>
+                        <polygon points="100,45 150,72.5 150,127.5 100,155 50,127.5 50,72.5" fill="url(#grad3)" opacity="0.05" stroke="url(#grad3)" stroke-width="1"/>
+                        <path d="M 75 65 L 95 90 L 95 100 L 75 100 Z" fill="url(#grad3)" filter="url(#glow3)"/>
+                        <path d="M 70 70 L 90 95 L 90 105 L 70 105 Z" fill="url(#grad3)" opacity="0.3"/>
+                        <path d="M 125 65 L 105 90 L 105 100 L 125 100 Z" fill="url(#grad3b)" filter="url(#glow3)"/>
+                        <path d="M 130 70 L 110 95 L 110 105 L 130 105 Z" fill="url(#grad3b)" opacity="0.3"/>
+                        <rect x="92" y="95" width="16" height="75" rx="8" fill="url(#grad3)" filter="url(#glow3)"/>
+                        <rect x="95" y="98" width="10" height="70" rx="5" fill="url(#grad3b)" opacity="0.4"/>
+                        <circle cx="100" cy="95" r="13" fill="url(#grad3b)" filter="url(#glow3)"/>
+                        <circle cx="100" cy="95" r="9" fill="url(#grad3)" opacity="0.5"/>
+                        <circle cx="100" cy="95" r="5" fill="white"/>
+                        <circle cx="100" cy="175" r="11" fill="url(#grad3)" filter="url(#glow3)"/>
+                        <circle cx="100" cy="175" r="7" fill="url(#grad3b)" opacity="0.6"/>
+                        <line x1="80" y1="100" x2="95" y2="100" stroke="url(#grad3)" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
+                        <line x1="105" y1="100" x2="120" y2="100" stroke="url(#grad3b)" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
+                        <circle cx="55" cy="55" r="3.5" fill="url(#grad3b)" opacity="0.6"/>
+                        <circle cx="145" cy="145" r="3.5" fill="url(#grad3)" opacity="0.6"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>YUNO</h1>
+                    <p class="logo-tagline">Professional Invoice Generator.</p>
+                </div>
+            </div>
+            <p class="hero-description">Professional invoice management for freelancers, entrepreneurs, and small businesses. Fast, secure, and completely free.</p>
+            <div class="hero-buttons">
+                <a href="pages/login.html" class="btn-hero btn-hero-primary">
+                    <span class="btn-icon">🚀</span>
+                    Get Started Free
+                </a>
+                <a href="pages/features.html" class="btn-hero btn-hero-secondary">
+                    <span class="btn-icon">📚</span>
+                    See All Features
+                </a>
+            </div>
+        </div>
+        <div class="hero-graphic">
+            <div class="graphic-card">
+                <div class="graphic-header">Invoice #2025-001</div>
+                <div class="graphic-item">Professional Service</div>
+                <div class="graphic-item">Consulting Hours</div>
+                <div class="graphic-total" style="border-top: 2px solid #ddd; margin-top: 1rem; padding-top: 1rem;">Total: $1,500</div>
+            </div>
+        </div>
+    </header>
+
     <main>
-        <h2>Start Generating Your Invoices</h2>
-        <p>Get started with creating and managing invoices quickly and easily with Yuno.<br></p>
-        <h1 style = text-align: center;> Stay Tuened For Latest Updates </h1>
+        <div class="container">
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Free Forever</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Unlimited Invoices</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">🔒</div>
+                    <div class="stat-label">Completely Secure</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">⚡</div>
+                    <div class="stat-label">Lightning Fast</div>
+                </div>
+            </section>
+
+            <!-- Features Highlight -->
+            <section class="features-highlight">
+                <h2 class="section-title">Why Choose Yuno?</h2>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="feature-card carousel-slide">
+                            <div class="feature-icon">⚡</div>
+                            <h3>Lightning Fast</h3>
+                            <p>Create professional invoices in seconds. Simple, intuitive forms that anyone can use.</p>
+                        </div>
+                        <div class="feature-card carousel-slide">
+                            <div class="feature-icon">🔒</div>
+                            <h3>Completely Secure</h3>
+                            <p>Your data stays on your device. No cloud, no servers, no data harvesting.</p>
+                        </div>
+                        <div class="feature-card carousel-slide">
+                            <div class="feature-icon">💼</div>
+                            <h3>Professional Results</h3>
+                            <p>Generate beautiful invoices that impress your clients and look highly professional.</p>
+                        </div>
+                        <div class="feature-card carousel-slide">
+                            <div class="feature-icon">📊</div>
+                            <h3>Smart Dashboard</h3>
+                            <p>Track everything at a glance. Monitor invoices, amounts, and payment status.</p>
+                        </div>
+                        <div class="feature-card carousel-slide">
+                            <div class="feature-icon">👥</div>
+                            <h3>Client Management</h3>
+                            <p>Save client profiles and auto-populate invoices for faster billing.</p>
+                        </div>
+                        <div class="feature-card carousel-slide">
+                            <div class="feature-icon">🎯</div>
+                            <h3>Perfect Accuracy</h3>
+                            <p>Automatic calculations for totals, taxes, and amounts. No math errors.</p>
+                        </div>
+                    </div>
+                    <button class="carousel-btn carousel-prev" onclick="prevSlide()" title="Previous">◀</button>
+                    <button class="carousel-btn carousel-next" onclick="nextSlide()" title="Next">▶</button>
+                </div>
+                <div class="carousel-dots" id="carouselDots"></div>
+            </section>
+
+            <!-- How It Works -->
+            <section class="how-it-works">
+                <h2 class="section-title">How It Works in 3 Steps</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Create Account</h3>
+                        <p>Sign up for free in 2 minutes. Enter your business details and you're ready to go.</p>
+                        <div class="step-icon">🎯</div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Create Invoice</h3>
+                        <p>Add line items, set prices, and taxes. Watch totals calculate automatically.</p>
+                        <div class="step-icon">📝</div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Track & Manage</h3>
+                        <p>View all invoices in your dashboard, search, filter, and manage your billing.</p>
+                        <div class="step-icon">📊</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call-to-Action Section -->
+            <div class="cta-box">
+                <h3>Ready to Get Started?</h3>
+                <p>Join thousands of businesses using Yuno to generate professional invoices</p>
+                <div class="cta-buttons">
+                    <a href="pages/login.html" class="cta-button primary">Create Free Account</a>
+                    <a href="pages/features.html" class="cta-button secondary">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Benefits Section -->
+            <section class="benefits-section" style="margin: 4rem 0; text-align: center;">
+                <h2 class="section-title">What Our Users Say</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div style="padding: 1.5rem; background: #f8f9fa; border-radius: 10px;">
+                        <p style="color: #666; line-height: 1.6;">⭐⭐⭐⭐⭐ "Yuno made invoice management so simple and professional."</p>
+                        <p style="margin-top: 1rem; font-weight: 600; color: #2c3e50;">- Small Business Owner</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: #f8f9fa; border-radius: 10px;">
+                        <p style="color: #666; line-height: 1.6;">⭐⭐⭐⭐⭐ "No hidden fees, no ads, just pure functionality. Love it!"</p>
+                        <p style="margin-top: 1rem; font-weight: 600; color: #2c3e50;">- Freelancer</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: #f8f9fa; border-radius: 10px;">
+                        <p style="color: #666; line-height: 1.6;">⭐⭐⭐⭐⭐ "Best invoicing tool I've used. Highly recommended!"</p>
+                        <p style="margin-top: 1rem; font-weight: 600; color: #2c3e50;">- Entrepreneur</p>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Yuno.com - All Rights Reserved</p>
-    </footer>
+    <footer></footer>
 
-    <script src="scripts.js"></script>
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/theme-manager.js"></script>
+    <script src="assets/js/components-loader.js"></script>
+    <script src="assets/js/invoice-manager.js"></script>
+    <script src="assets/js/form-handler.js"></script>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/carousel.js"></script>
+    <script src="assets/js/dashboard.js"></script>
 </body>
 </html>

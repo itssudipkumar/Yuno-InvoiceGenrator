@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Management - Yuno</title>
+    <link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../assets/css/core.css">
+    <link rel="stylesheet" href="../assets/css/typography.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/hero.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="../assets/css/buttons.css">
+    <link rel="stylesheet" href="../assets/css/form-styles.css">
+    <link rel="stylesheet" href="../assets/css/table-styles.css">
+    <link rel="stylesheet" href="../assets/css/modal.css">
+    <link rel="stylesheet" href="../assets/css/banner.css">
+    <link rel="stylesheet" href="../assets/css/totals.css">
+    <link rel="stylesheet" href="../assets/css/sections.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav id="topNav">
+        <div id="navBrand" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+            <img src="../assets/images/logo.svg" alt="Yuno Logo" style="width: 40px; height: 40px; display: flex;" />
+            <h1 style="margin: 0; background: linear-gradient(135deg, #ffffff 0%, #00d4ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; font-size: 1.5rem; letter-spacing: 1px; white-space: nowrap;">YUNO</h1>
+        </div>
+        <div id="navMenu"></div>
+        <button id="themeToggle" title="Toggle Dark Mode" style="background: none; border: none; cursor: pointer; font-size: 1.5rem; padding: 0.5rem; border-radius: 50%; hover-background: rgba(0,0,0,0.1); transition: all 0.3s ease;">
+            <span class="theme-icon">🌙</span>
+        </button>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; margin-bottom: 2rem;">
+                <!-- Add Client Form -->
+                <div>
+                    <h2 style="margin-top: 0;">Add New Client</h2>
+                    <form id="addClientForm" class="invoice-form" style="padding: 0;">
+                        <div class="form-group" style="margin-bottom: 1rem;">
+                            <label for="clientName">Name:</label>
+                            <input type="text" id="clientName" name="clientName" required>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 1rem;">
+                            <label for="clientCompany">Company:</label>
+                            <input type="text" id="clientCompany" name="clientCompany">
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 1rem;">
+                            <label for="clientEmail">Email:</label>
+                            <input type="email" id="clientEmail" name="clientEmail" required>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 1rem;">
+                            <label for="clientPhone">Phone:</label>
+                            <input type="tel" id="clientPhone" name="clientPhone">
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 1rem;">
+                            <label for="clientAddress">Address:</label>
+                            <textarea id="clientAddress" name="clientAddress" rows="3" style="resize: none;"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 0;">Add Client</button>
+                    </form>
+                </div>
+
+                <!-- Clients List -->
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h2 style="margin: 0;">Your Clients</h2>
+                        <input type="text" id="clientFilterInput" class="search-box" placeholder="Search clients..." style="max-width: 250px; margin: 0;">
+                    </div>
+
+                    <div id="clientsListContainer" style="background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); overflow: hidden;">
+                        <table id="clientsTable" class="dashboard-table" style="margin: 0;">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Company</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="clientsBody">
+                                <tr>
+                                    <td colspan="5" class="text-center">No clients added yet.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Client Details Modal -->
+            <div id="clientModal" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 id="modalTitle">Client Details</h2>
+                    <div id="clientDetails" style="background: #f8f9fa; padding: 1.5rem; border-radius: 5px; margin: 1rem 0;">
+                    </div>
+                    <div class="button-group">
+                        <button id="editClientBtn" class="btn-secondary">Edit</button>
+                        <button id="deleteClientBtn" class="btn-danger">Delete</button>
+                        <button class="close-modal btn-secondary">Close</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Client Modal -->
+            <div id="editModal" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Edit Client</h2>
+                    <form id="editClientForm" class="invoice-form" style="padding: 0;">
+                        <div class="form-group" style="margin-bottom: 1rem;">
+                            <label for="editClientName">Name:</label>
+                            <input type="text" id="editClientName" name="editClientName" required>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 1rem;">
+                            <label for="editClientCompany">Company:</label>
+                            <input type="text" id="editClientCompany" name="editClientCompany">
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 1rem;">
+                            <label for="editClientEmail">Email:</label>
+                            <input type="email" id="editClientEmail" name="editClientEmail" required>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 1rem;">
+                            <label for="editClientPhone">Phone:</label>
+                            <input type="tel" id="editClientPhone" name="editClientPhone">
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 1rem;">
+                            <label for="editClientAddress">Address:</label>
+                            <textarea id="editClientAddress" name="editClientAddress" rows="3" style="resize: none;"></textarea>
+                        </div>
+
+                        <div class="button-group">
+                            <button type="submit" class="btn-primary">Save Changes</button>
+                            <button type="button" class="close-modal btn-secondary">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer></footer>
+
+    <script src="../assets/js/utils.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/theme-manager.js"></script>
+    <script src="../assets/js/components-loader.js"></script>
+    <script src="../assets/js/invoice-manager.js"></script>
+    <script src="../assets/js/form-handler.js"></script>
+    <script src="../assets/js/navigation.js"></script>
+    <script src="../assets/js/carousel.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+    <script>
+        let currentEditingClientId = null;
+
+        // Initialize client management
+        document.getElementById('addClientForm').addEventListener('submit', handleAddClient);
+        document.getElementById('clientFilterInput').addEventListener('keyup', filterClients);
+
+        // Modal controls
+        document.querySelectorAll('.close, .close-modal').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.getElementById('clientModal').classList.add('hidden');
+                document.getElementById('editModal').classList.add('hidden');
+            });
+        });
+
+        document.getElementById('editClientBtn').addEventListener('click', enableEditMode);
+        document.getElementById('deleteClientBtn').addEventListener('click', deleteCurrentClient);
+        document.getElementById('editClientForm').addEventListener('submit', handleSaveEdit);
+
+        function handleAddClient(e) {
+            e.preventDefault();
+            
+            const clientData = {
+                id: Date.now(),
+                name: document.getElementById('clientName').value,
+                company: document.getElementById('clientCompany').value,
+                email: document.getElementById('clientEmail').value,
+                phone: document.getElementById('clientPhone').value,
+                address: document.getElementById('clientAddress').value
+            };
+
+            saveClient(clientData);
+            document.getElementById('addClientForm').reset();
+            loadClients();
+            alert('Client added successfully!');
+        }
+
+        function saveClient(clientData) {
+            let clients = JSON.parse(localStorage.getItem('clients')) || [];
+            clients.push(clientData);
+            localStorage.setItem('clients', JSON.stringify(clients));
+        }
+
+        function loadClients() {
+            const clients = JSON.parse(localStorage.getItem('clients')) || [];
+            const tbody = document.getElementById('clientsBody');
+            tbody.innerHTML = '';
+
+            if (clients.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="text-center">No clients added yet.</td></tr>';
+                return;
+            }
+
+            clients.forEach(client => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${client.name}</td>
+                    <td>${client.company || '-'}</td>
+                    <td>${client.email}</td>
+                    <td>${client.phone || '-'}</td>
+                    <td>
+                        <button class="btn-small" onclick="viewClient(${client.id})">View</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        window.viewClient = function(id) {
+            const clients = JSON.parse(localStorage.getItem('clients')) || [];
+            const client = clients.find(c => c.id === id);
+            
+            if (client) {
+                currentEditingClientId = id;
+                document.getElementById('modalTitle').textContent = client.name;
+                document.getElementById('clientDetails').innerHTML = `
+                    <div><strong>Name:</strong> ${client.name}</div>
+                    <div style="margin-top: 0.5rem;"><strong>Company:</strong> ${client.company || 'N/A'}</div>
+                    <div style="margin-top: 0.5rem;"><strong>Email:</strong> ${client.email}</div>
+                    <div style="margin-top: 0.5rem;"><strong>Phone:</strong> ${client.phone || 'N/A'}</div>
+                    <div style="margin-top: 0.5rem;"><strong>Address:</strong> ${client.address || 'N/A'}</div>
+                `;
+                document.getElementById('clientModal').classList.remove('hidden');
+            }
+        };
+
+        function enableEditMode() {
+            const clients = JSON.parse(localStorage.getItem('clients')) || [];
+            const client = clients.find(c => c.id === currentEditingClientId);
+            
+            if (client) {
+                document.getElementById('editClientName').value = client.name;
+                document.getElementById('editClientCompany').value = client.company || '';
+                document.getElementById('editClientEmail').value = client.email;
+                document.getElementById('editClientPhone').value = client.phone || '';
+                document.getElementById('editClientAddress').value = client.address || '';
+                
+                document.getElementById('clientModal').classList.add('hidden');
+                document.getElementById('editModal').classList.remove('hidden');
+            }
+        }
+
+        function handleSaveEdit(e) {
+            e.preventDefault();
+            
+            let clients = JSON.parse(localStorage.getItem('clients')) || [];
+            const clientIndex = clients.findIndex(c => c.id === currentEditingClientId);
+            
+            if (clientIndex !== -1) {
+                clients[clientIndex] = {
+                    ...clients[clientIndex],
+                    name: document.getElementById('editClientName').value,
+                    company: document.getElementById('editClientCompany').value,
+                    email: document.getElementById('editClientEmail').value,
+                    phone: document.getElementById('editClientPhone').value,
+                    address: document.getElementById('editClientAddress').value
+                };
+                
+                localStorage.setItem('clients', JSON.stringify(clients));
+                document.getElementById('editModal').classList.add('hidden');
+                loadClients();
+                alert('Client updated successfully!');
+            }
+        }
+
+        function deleteCurrentClient() {
+            if (confirm('Are you sure you want to delete this client?')) {
+                let clients = JSON.parse(localStorage.getItem('clients')) || [];
+                clients = clients.filter(c => c.id !== currentEditingClientId);
+                localStorage.setItem('clients', JSON.stringify(clients));
+                document.getElementById('clientModal').classList.add('hidden');
+                loadClients();
+                alert('Client deleted successfully!');
+            }
+        }
+
+        function filterClients() {
+            const filterValue = document.getElementById('clientFilterInput').value.toLowerCase();
+            const rows = document.getElementById('clientsTable').querySelectorAll('tbody tr');
+            
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(filterValue) ? '' : 'none';
+            });
+        }
+
+        // Load clients on page load
+        loadClients();
+    </script>
+</body>
+</html>

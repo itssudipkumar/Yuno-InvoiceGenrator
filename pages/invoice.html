@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Invoice - Yuno</title>
+    <link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../assets/css/core.css">
+    <link rel="stylesheet" href="../assets/css/typography.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/hero.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="../assets/css/buttons.css">
+    <link rel="stylesheet" href="../assets/css/form-styles.css">
+    <link rel="stylesheet" href="../assets/css/table-styles.css">
+    <link rel="stylesheet" href="../assets/css/modal.css">
+    <link rel="stylesheet" href="../assets/css/banner.css">
+    <link rel="stylesheet" href="../assets/css/totals.css">
+    <link rel="stylesheet" href="../assets/css/sections.css">
+    <link rel="stylesheet" href="../assets/css/invoice-creator.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav id="topNav">
+        <div id="navBrand" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+            <img src="../assets/images/logo.svg" alt="Yuno Logo" style="width: 40px; height: 40px; display: flex;" />
+            <h1 style="margin: 0; background: linear-gradient(135deg, #ffffff 0%, #00d4ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; font-size: 1.5rem; letter-spacing: 1px;">YUNO</h1>
+        </div>
+        <div id="navMenu"></div>
+        <button id="themeToggle" title="Toggle Dark Mode" style="background: none; border: none; cursor: pointer; font-size: 1.5rem; padding: 0.5rem; border-radius: 50%; hover-background: rgba(0,0,0,0.1); transition: all 0.3s ease;">
+            <span class="theme-icon">🌙</span>
+        </button>
+    </nav>
+
+    <main>
+        <div class="invoice-creator-container">
+            <!-- Header -->
+            <div class="invoice-creator-header">
+                <h1><i class="fas fa-file-invoice-dollar"></i> Create Invoice</h1>
+                <p>Fill in the details below to create a professional invoice</p>
+            </div>
+
+            <!-- Form Container -->
+            <div class="invoice-form-wrapper">
+                <!-- Left Column: Form Sections -->
+                <div class="invoice-form-left">
+                    <form id="invoiceForm">
+                        <!-- Business Information Section -->
+                        <div class="invoice-section">
+                            <h3 class="section-title"><i class="fas fa-building"></i> Business Information</h3>
+                            <div class="section-content">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="businessName">Business Name:</label>
+                                        <input type="text" id="businessName" placeholder="Your Business Name">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="businessABN">ABN:</label>
+                                        <input type="text" id="businessABN" placeholder="e.g., 12345678901">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="businessEmail">Email:</label>
+                                        <input type="email" id="businessEmail" placeholder="business@example.com">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="businessPhone">Phone:</label>
+                                        <input type="tel" id="businessPhone" placeholder="+61 2 XXXX XXXX">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="businessAddress">Address:</label>
+                                        <input type="text" id="businessAddress" placeholder="123 Street, City, Country">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Invoice Details Section -->
+                        <div class="invoice-section">
+                            <h3 class="section-title"><i class="fas fa-calendar-alt"></i> Invoice Details</h3>
+                            <div class="section-content">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="invoiceNumber">Invoice Number:</label>
+                                        <input type="text" id="invoiceNumber" placeholder="INV-001" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="invoiceDate">Invoice Date:</label>
+                                        <input type="date" id="invoiceDate" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="dueDate">Due Date:</label>
+                                        <input type="date" id="dueDate" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Client Information Section -->
+                        <div class="invoice-section">
+                            <h3 class="section-title"><i class="fas fa-user-circle"></i> Client Information</h3>
+                            <div class="section-content">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="clientName">Client Name:</label>
+                                        <input type="text" id="clientName" placeholder="Client full name" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="clientAddress">Address:</label>
+                                        <input type="text" id="clientAddress" placeholder="123 Street, City, Country">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="clientPhone">Phone: <span class="optional">(Optional)</span></label>
+                                        <input type="tel" id="clientPhone" placeholder="+61 2 XXXX XXXX">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="clientEmail">Email: <span class="optional">(Optional)</span></label>
+                                        <input type="email" id="clientEmail" placeholder="client@example.com">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Items Section -->
+                        <div class="invoice-section">
+                            <h3 class="section-title"><i class="fas fa-list"></i> Line Items</h3>
+                            <div class="section-content">
+                                <div class="items-table-wrapper">
+                                    <table class="items-table" id="itemsTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Description</th>
+                                                <th>Qty</th>
+                                                <th>Unit Price</th>
+                                                <th>Amount</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="itemsBody">
+                                            <tr class="item-row">
+                                                <td><input type="text" class="item-description" placeholder="Service description" required></td>
+                                                <td><input type="number" class="item-quantity" value="1" min="1" required></td>
+                                                <td><input type="number" class="item-price" placeholder="0.00" min="0" step="0.01" required></td>
+                                                <td class="item-amount">$0.00</td>
+                                                <td><button type="button" class="btn-remove-item" onclick="removeItemRow(this)"><i class="fas fa-trash"></i></button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <button type="button" class="btn-add-item" onclick="addItemRow()">
+                                    <i class="fas fa-plus"></i> Add Item
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Notes Section -->
+                        <div class="invoice-section">
+                            <h3 class="section-title"><i class="fas fa-sticky-note"></i> Notes & Terms</h3>
+                            <div class="section-content">
+                                <div class="form-group">
+                                    <label for="notes">Additional Notes:</label>
+                                    <textarea id="notes" placeholder="Thank you for your business..." rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+
+                <!-- Right Column: Preview & Totals -->
+                <div class="invoice-form-right">
+                    <!-- Totals Section -->
+                    <div class="invoice-totals-card">
+                        <h3 class="totals-title"><i class="fas fa-calculator"></i> Summary</h3>
+                        
+                        <div class="totals-item">
+                            <span class="totals-label">Subtotal:</span>
+                            <span class="totals-value" id="totalSubtotal">$0.00</span>
+                        </div>
+
+                        <div class="totals-item">
+                            <label for="taxRate">Tax Rate (%):</label>
+                            <input type="number" id="taxRate" min="0" max="100" step="0.01" value="10" class="tax-input">
+                        </div>
+
+                        <div class="totals-item">
+                            <span class="totals-label">Tax:</span>
+                            <span class="totals-value" id="totalTax">$0.00</span>
+                        </div>
+
+                        <div class="totals-divider"></div>
+
+                        <div class="totals-item total-final">
+                            <span class="totals-label">Total:</span>
+                            <span class="totals-value-final" id="totalFinal">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Invoice Action Buttons -->
+        <div class="invoice-actions-section">
+            <div class="invoice-actions-container">
+                <button type="submit" class="btn-action btn-generate" form="invoiceForm">
+                    <i class="fas fa-check"></i> Generate
+                </button>
+                <button type="button" class="btn-action btn-save" onclick="saveInvoiceAction()">
+                    <i class="fas fa-save"></i> Save
+                </button>
+                <button type="button" class="btn-action btn-print" onclick="printInvoiceAction()">
+                    <i class="fas fa-print"></i> Print
+                </button>
+                <button type="button" class="btn-action btn-send" onclick="sendInvoiceAction()">
+                    <i class="fas fa-envelope"></i> Send
+                </button>
+                <button type="button" class="btn-action btn-preview" onclick="previewInvoiceAction()">
+                    <i class="fas fa-eye"></i> Preview
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Invoice Preview Modal - Removed (No Popup) -->
+
+    <footer></footer>
+
+    <script src="../assets/js/utils.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/theme-manager.js"></script>
+    <script src="../assets/js/components-loader.js"></script>
+    <script src="../assets/js/invoice-manager.js"></script>
+    <script src="../assets/js/form-handler.js"></script>
+    <script src="../assets/js/navigation.js"></script>
+    <script src="../assets/js/carousel.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+    
+    <script>
+        // Check if user is logged in
+        if (!AuthManager.isLoggedIn()) {
+            window.location.href = './login.html';
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeNavigation();
+            initializeLogoClickHandler();
+            initializeDarkMode();
+            
+            // Add a small delay to ensure all scripts are loaded
+            setTimeout(function() {
+                populateBusinessInfo();
+                updateTotals();
+                setupItemListeners();
+            }, 100);
+        });
+
+        // Populate business info from localStorage
+        function populateBusinessInfo() {
+            const user = AuthManager.getCurrentUser();
+            console.log('📋 Current User Data:', user);
+            
+            if (user) {
+                try {
+                    document.getElementById('businessName').value = user.businessName || '';
+                    document.getElementById('businessABN').value = user.businessABN || '';
+                    document.getElementById('businessEmail').value = user.businessEmail || '';
+                    document.getElementById('businessPhone').value = user.businessPhone || '';
+                    document.getElementById('businessAddress').value = user.businessAddress || '';
+                    console.log('✅ Business info populated successfully');
+                } catch (e) {
+                    console.error('❌ Error populating business info:', e);
+                }
+                
+                document.getElementById('invoiceNumber').value = generateInvoiceNumber();
+                document.getElementById('invoiceDate').valueAsDate = new Date();
+                const dueDate = new Date();
+                dueDate.setDate(dueDate.getDate() + 30);
+                document.getElementById('dueDate').valueAsDate = dueDate;
+            } else {
+                console.warn('⚠️ No user found in localStorage');
+            }
+        }
+
+        // Generate invoice number
+        function generateInvoiceNumber() {
+            const invoices = getStorageData('invoices') || [];
+            const lastNum = invoices.length > 0 ? 
+                parseInt(invoices[invoices.length - 1].invoiceNumber.split('-')[1] || 0) : 0;
+            return `INV-${String(lastNum + 1).padStart(4, '0')}`;
+        }
+
+        // Add item row
+        function addItemRow() {
+            const tbody = document.getElementById('itemsBody');
+            const newRow = document.createElement('tr');
+            newRow.className = 'item-row';
+            newRow.innerHTML = `
+                <td><input type="text" class="item-description" placeholder="Service description" required></td>
+                <td><input type="number" class="item-quantity" value="1" min="1" required></td>
+                <td><input type="number" class="item-price" placeholder="0.00" min="0" step="0.01" required></td>
+                <td class="item-amount">$0.00</td>
+                <td><button type="button" class="btn-remove-item" onclick="removeItemRow(this)"><i class="fas fa-trash"></i></button></td>
+            `;
+            tbody.appendChild(newRow);
+            setupItemListeners();
+        }
+
+        // Remove item row
+        function removeItemRow(btn) {
+            const tbody = document.getElementById('itemsBody');
+            if (tbody.rows.length > 1) {
+                btn.closest('tr').remove();
+                updateTotals();
+            } else {
+                alert('You must have at least one item');
+            }
+        }
+
+        // Setup item input listeners
+        function setupItemListeners() {
+            const inputs = document.querySelectorAll('.item-quantity, .item-price, #taxRate');
+            inputs.forEach(input => {
+                input.addEventListener('change', updateTotals);
+                input.addEventListener('input', updateTotals);
+            });
+        }
+
+        // Update totals
+        function updateTotals() {
+            let subtotal = 0;
+            document.querySelectorAll('.item-row').forEach(row => {
+                const qty = parseFloat(row.querySelector('.item-quantity').value) || 0;
+                const price = parseFloat(row.querySelector('.item-price').value) || 0;
+                const amount = qty * price;
+                row.querySelector('.item-amount').textContent = formatCurrency(amount);
+                subtotal += amount;
+            });
+
+            const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
+            const tax = subtotal * (taxRate / 100);
+            const total = subtotal + tax;
+
+            document.getElementById('totalSubtotal').textContent = formatCurrency(subtotal);
+            document.getElementById('totalTax').textContent = formatCurrency(tax);
+            document.getElementById('totalFinal').textContent = formatCurrency(total);
+        }
+
+        // Get invoice form data
+        function getInvoiceFormData() {
+            const items = [];
+            document.querySelectorAll('.item-row').forEach(row => {
+                const description = row.querySelector('.item-description').value;
+                const quantity = parseFloat(row.querySelector('.item-quantity').value) || 0;
+                const price = parseFloat(row.querySelector('.item-price').value) || 0;
+
+                if (description && quantity && price) {
+                    items.push({ description, quantity, price });
+                }
+            });
+
+            if (items.length === 0) {
+                alert('Please add at least one item');
+                return null;
+            }
+
+            const subtotal = items.reduce((sum, item) => sum + (item.quantity * item.price), 0);
+            const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
+            const tax = subtotal * (taxRate / 100);
+            const total = subtotal + tax;
+
+            return {
+                businessName: document.getElementById('businessName').value,
+                businessABN: document.getElementById('businessABN').value,
+                businessEmail: document.getElementById('businessEmail').value,
+                businessPhone: document.getElementById('businessPhone').value,
+                businessAddress: document.getElementById('businessAddress').value,
+                invoiceNumber: document.getElementById('invoiceNumber').value,
+                invoiceDate: document.getElementById('invoiceDate').value,
+                dueDate: document.getElementById('dueDate').value,
+                clientName: document.getElementById('clientName').value,
+                clientAddress: document.getElementById('clientAddress').value,
+                clientPhone: document.getElementById('clientPhone').value,
+                clientEmail: document.getElementById('clientEmail').value,
+                items: items,
+                subtotal: formatCurrency(subtotal),
+                tax: formatCurrency(tax),
+                taxRate: taxRate,
+                total: formatCurrency(total),
+                notes: document.getElementById('notes').value
+            };
+        }
+
+        // Store current form data for saving
+        let currentFormData = null;
+
+        // Save invoice action button
+        function saveInvoiceAction() {
+            const formData = getInvoiceFormData();
+            if (!formData) return;
+
+            saveInvoiceDirect(formData);
+            alert('✅ Invoice saved successfully!');
+            document.getElementById('invoiceForm').reset();
+            populateBusinessInfo();
+        }
+
+        // Print invoice action button
+        function printInvoiceAction() {
+            const formData = getInvoiceFormData();
+            if (!formData) return;
+
+            const printContent = generateInvoicePrintContent(formData);
+            const printWindow = window.open('', '', 'height=600,width=800');
+            printWindow.document.write(printContent);
+            printWindow.document.close();
+            setTimeout(() => {
+                printWindow.print();
+            }, 250);
+        }
+
+        // Generate invoice print content
+        function generateInvoicePrintContent(formData) {
+            let itemsHTML = '';
+            formData.items.forEach(item => {
+                itemsHTML += `
+                    <tr>
+                        <td>${item.description}</td>
+                        <td style="text-align: center;">${item.quantity}</td>
+                        <td style="text-align: right;">$${item.price.toFixed(2)}</td>
+                        <td style="text-align: right;">$${(item.quantity * item.price).toFixed(2)}</td>
+                    </tr>
+                `;
+            });
+
+            return `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Invoice ${formData.invoiceNumber}</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; margin: 20px; color: #333; }
+                        .invoice-header { text-align: center; margin-bottom: 30px; }
+                        .invoice-header h1 { margin: 0; color: #00d4ff; }
+                        .invoice-info { display: flex; justify-content: space-between; margin-bottom: 30px; }
+                        .info-section { flex: 1; }
+                        .info-section h3 { color: #00d4ff; margin-top: 0; }
+                        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+                        th { background-color: #f0f0f0; padding: 10px; text-align: left; border: 1px solid #ddd; }
+                        td { padding: 10px; border: 1px solid #ddd; }
+                        .totals { text-align: right; margin-top: 20px; }
+                        .totals-row { display: flex; justify-content: flex-end; margin: 5px 0; }
+                        .totals-label { width: 150px; font-weight: bold; }
+                        .totals-value { width: 100px; text-align: right; }
+                        .total-final { font-size: 1.2em; color: #00d4ff; font-weight: bold; border-top: 2px solid #00d4ff; padding-top: 10px; }
+                        .notes { margin-top: 30px; padding: 10px; background-color: #f9f9f9; border-left: 3px solid #00d4ff; }
+                    </style>
+                </head>
+                <body>
+                    <div class="invoice-header">
+                        <h1>INVOICE</h1>
+                        <p>Invoice #: ${formData.invoiceNumber} | Date: ${formData.invoiceDate}</p>
+                    </div>
+
+                    <div class="invoice-info">
+                        <div class="info-section">
+                            <h3>From:</h3>
+                            <p><strong>${formData.businessName}</strong></p>
+                            <p>${formData.businessAddress}</p>
+                            <p>ABN: ${formData.businessABN}</p>
+                            <p>Phone: ${formData.businessPhone}</p>
+                            <p>Email: ${formData.businessEmail}</p>
+                        </div>
+                        <div class="info-section">
+                            <h3>Bill To:</h3>
+                            <p><strong>${formData.clientName}</strong></p>
+                            <p>${formData.clientAddress}</p>
+                            <p>Phone: ${formData.clientPhone}</p>
+                            <p>Email: ${formData.clientEmail}</p>
+                        </div>
+                        <div class="info-section">
+                            <h3>Invoice Details:</h3>
+                            <p><strong>Due Date:</strong> ${formData.dueDate}</p>
+                        </div>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Quantity</th>
+                                <th>Unit Price</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${itemsHTML}
+                        </tbody>
+                    </table>
+
+                    <div class="totals">
+                        <div class="totals-row">
+                            <span class="totals-label">Subtotal:</span>
+                            <span class="totals-value">${formData.subtotal}</span>
+                        </div>
+                        <div class="totals-row">
+                            <span class="totals-label">Tax (${formData.taxRate}%):</span>
+                            <span class="totals-value">${formData.tax}</span>
+                        </div>
+                        <div class="totals-row total-final">
+                            <span class="totals-label">Total:</span>
+                            <span class="totals-value">${formData.total}</span>
+                        </div>
+                    </div>
+
+                    ${formData.notes ? `<div class="notes"><strong>Notes:</strong><p>${formData.notes}</p></div>` : ''}
+                </body>
+                </html>
+            `;
+        }
+
+        // Send invoice action button
+        function sendInvoiceAction() {
+            const formData = getInvoiceFormData();
+            if (!formData) return;
+
+            const clientEmail = formData.clientEmail;
+            if (!clientEmail) {
+                alert('Please enter client email to send invoice');
+                return;
+            }
+
+            const mailtoLink = `mailto:${clientEmail}?subject=Invoice ${formData.invoiceNumber} from ${formData.businessName}&body=Hi ${formData.clientName},\n\nPlease find attached invoice ${formData.invoiceNumber}.\n\nInvoice Details:\n- Amount: ${formData.total}\n- Due Date: ${formData.dueDate}\n\nThank you for your business.\n\nBest regards,\n${formData.businessName}`;
+            window.location.href = mailtoLink;
+
+            alert('Opening email client to send invoice to ' + clientEmail);
+        }
+
+        // Preview invoice action button
+        function previewInvoiceAction() {
+            const formData = getInvoiceFormData();
+            if (!formData) return;
+
+            const printContent = generateInvoicePrintContent(formData);
+            const previewWindow = window.open('', 'invoicePreview', 'height=700,width=900');
+            previewWindow.document.write(printContent);
+            previewWindow.document.close();
+        }
+
+        // Save invoice directly
+        function saveInvoiceDirect(formData) {
+            formData.status = 'draft';
+            formData.savedAt = new Date().toISOString();
+            
+            const existingInvoices = getStorageData('invoices') || [];
+            existingInvoices.push(formData);
+            setStorageData('invoices', existingInvoices);
+            
+            console.log('✅ Invoice saved:', formData.invoiceNumber);
+            return formData;
+        }
+
+        // Handle form submit - save directly without popup
+        document.getElementById('invoiceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = getInvoiceFormData();
+            if (formData) {
+                saveInvoiceDirect(formData);
+                alert('✅ Invoice saved successfully!');
+                document.getElementById('invoiceForm').reset();
+                populateBusinessInfo();
+                
+                setTimeout(() => {
+                    window.location.href = './dashboard.html';
+                }, 500);
+            }
+        });
+
+        // Initialize dark mode
+        function initializeDarkMode() {
+            const isDarkMode = localStorage.getItem('darkMode') === 'true';
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+            }
+        }
+    </script>
+</body>
+</html>

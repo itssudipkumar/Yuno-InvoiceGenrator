@@ -1,0 +1,319 @@
+/**
+ * =============================================
+ * BANNER STYLES
+ * Alert banners, CTA boxes, warnings
+ * =============================================
+ */
+
+/* ============ VISITOR WARNING BANNER ============ */
+
+#visitorBanner {
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+    display: none;
+    text-align: center;
+    background: #fff3cd;
+    border: 2px solid #ffc107;
+    color: #856404;
+    animation: slideDown 0.3s ease;
+}
+
+#visitorBanner.show {
+    display: block;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#visitorBanner strong {
+    color: #856404;
+    display: inline;
+    margin-right: 0.5rem;
+}
+
+#visitorBanner a {
+    color: #856404;
+    text-decoration: underline;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+#visitorBanner a:hover {
+    color: #693c00;
+}
+
+/* ============ ALERT BANNERS ============ */
+
+.alert,
+.banner {
+    padding: 1.2rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    animation: slideDown 0.3s ease;
+}
+
+.alert-info,
+.banner-info {
+    background: #ecf0f1;
+    border-left-color: #3498db;
+    color: #2c3e50;
+}
+
+.alert-success,
+.banner-success {
+    background: #d4edda;
+    border-left-color: #27ae60;
+    color: #155724;
+}
+
+.alert-warning,
+.banner-warning {
+    background: #fff3cd;
+    border-left-color: #f39c12;
+    color: #856404;
+}
+
+.alert-danger,
+.banner-danger {
+    background: #f8d7da;
+    border-left-color: #e74c3c;
+    color: #721c24;
+}
+
+.alert strong,
+.banner strong {
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+/* ============ CTA BOXES ============ */
+
+.cta-box {
+    padding: 2rem;
+    background: linear-gradient(135deg, #5b62b5 0%, #00a8ff 100%);
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    margin: 2rem 0;
+    box-shadow: 0 4px 15px rgba(91, 98, 181, 0.2);
+}
+
+.cta-box h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.6rem;
+    color: white;
+}
+
+.cta-box p {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.1rem;
+    opacity: 0.95;
+}
+
+.cta-box .btn-primary {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    color: white;
+}
+
+.cta-box .btn-primary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ============ QUICK START BANNER ============ */
+
+.quick-start {
+    background: #f8f9fa;
+    border: 2px dashed #5b62b5;
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.quick-start h3 {
+    color: #5b62b5;
+    margin-top: 0;
+}
+
+.quick-start-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.step {
+    text-align: center;
+}
+
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #5b62b5;
+    color: white;
+    font-weight: 700;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.step p {
+    font-size: 0.95rem;
+    color: #2c3e50;
+}
+
+/* ============ DARK MODE BANNERS ============ */
+
+body.dark-mode #visitorBanner {
+    background: rgba(241, 196, 15, 0.15);
+    border-color: #f39c12;
+    color: #f1c40f;
+}
+
+body.dark-mode #visitorBanner strong {
+    color: #f1c40f;
+}
+
+body.dark-mode #visitorBanner a {
+    color: #f1c40f;
+}
+
+body.dark-mode #visitorBanner a:hover {
+    color: #f39c12;
+}
+
+body.dark-mode .alert,
+body.dark-mode .banner {
+    background: rgba(26, 26, 46, 0.8);
+    border-left-color: #00d4ff;
+    color: #ffffff;
+}
+
+body.dark-mode .alert-success {
+    border-left-color: #27ae60;
+}
+
+body.dark-mode .alert-warning {
+    border-left-color: #f39c12;
+}
+
+body.dark-mode .alert-danger {
+    border-left-color: #e74c3c;
+}
+
+body.dark-mode .cta-box {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 153, 204, 0.2) 100%);
+    border: 2px solid #00d4ff;
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.15);
+}
+
+body.dark-mode .cta-box h3,
+body.dark-mode .cta-box p {
+    color: #00d4ff;
+}
+
+body.dark-mode .quick-start {
+    background: rgba(26, 26, 46, 0.6);
+    border-color: #00d4ff;
+}
+
+body.dark-mode .quick-start h3 {
+    color: #00d4ff;
+}
+
+body.dark-mode .step-number {
+    background: #00d4ff;
+    color: #0a0a14;
+}
+
+body.dark-mode .step p {
+    color: #ffffff;
+}
+
+/* ============ RESPONSIVE DESIGN ============ */
+
+@media (max-width: 768px) {
+    #visitorBanner,
+    .alert,
+    .banner {
+        padding: 1rem;
+        font-size: 0.95rem;
+    }
+
+    .cta-box {
+        padding: 1.5rem;
+    }
+
+    .cta-box h3 {
+        font-size: 1.3rem;
+    }
+
+    .cta-box p {
+        font-size: 1rem;
+    }
+
+    .quick-start {
+        padding: 1.5rem;
+    }
+
+    .quick-start-steps {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #visitorBanner,
+    .alert,
+    .banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+        padding: 0.75rem;
+    }
+
+    .cta-box {
+        padding: 1rem;
+    }
+
+    .cta-box h3 {
+        font-size: 1.1rem;
+    }
+
+    .cta-box p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .quick-start {
+        padding: 1rem;
+    }
+
+    .quick-start-steps {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .step-number {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+}
