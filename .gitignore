@@ -1,0 +1,7 @@
+node_modules/
+dist/
+bundle.html
+*.bak
+.DS_Store
+.env
+.env.local
