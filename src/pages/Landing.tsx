@@ -88,6 +88,38 @@ export default function Landing({ nav }: { nav: (p: Page) => void }) {
         </div>
       </section>
 
+
+      {/* Upcoming Features */}
+      <section className="upcoming-section">
+        <div style={{maxWidth:1000,margin:'0 auto'}}>
+          <h2 className="section-title">🚀 Coming Soon</h2>
+          <p style={{textAlign:'center',color:'var(--text2)',marginBottom:'2.5rem',marginTop:'-1.5rem'}}>We're constantly improving YUNO. Here's what's on the roadmap.</p>
+          <div className="upcoming-grid">
+            {[
+              {icon:'📄',label:'PDF Export',desc:'Download invoices as PDF with one click.',status:'In Progress'},
+              {icon:'📊',label:'Revenue Analytics',desc:'Monthly charts showing income, trends and growth.',status:'Planned'},
+              {icon:'🔄',label:'Recurring Invoices',desc:'Auto-generate invoices on a schedule for repeat clients.',status:'Planned'},
+              {icon:'📱',label:'Mobile App',desc:'Native iOS and Android app for invoicing on the go.',status:'Planned'},
+              {icon:'💳',label:'Online Payments',desc:'Accept card payments directly via invoice link.',status:'Planned'},
+              {icon:'☁️',label:'Cloud Backup',desc:'Optional encrypted backup of your data to the cloud.',status:'Planned'},
+              {icon:'📧',label:'Auto Email',desc:'Schedule invoice reminders and overdue follow-ups.',status:'Planned'},
+              {icon:'🧾',label:'Expense Tracking',desc:'Track business expenses and deductions in one place.',status:'Planned'},
+              {icon:'👥',label:'Team Access',desc:'Invite team members to manage invoices together.',status:'Planned'},
+              {icon:'🌏',label:'Multi-Currency',desc:'Invoice clients in USD, EUR, GBP and more.',status:'Planned'},
+            ].map(f=>(
+              <div key={f.label} className="upcoming-card">
+                <div className="upcoming-icon">{f.icon}</div>
+                <div className="upcoming-body">
+                  <div className="upcoming-label">{f.label}</div>
+                  <div className="upcoming-desc">{f.desc}</div>
+                </div>
+                <div className={`upcoming-status ${f.status==='In Progress'?'status-inprogress':'status-planned'}`}>{f.status}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="coffee-section">
         <div className="coffee-card">
           <div className="coffee-emoji">☕</div>

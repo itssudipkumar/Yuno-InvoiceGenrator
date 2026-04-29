@@ -19,6 +19,7 @@ export interface BusinessInfo {
   bankName?: string
   bsb?: string
   accountNumber?: string
+  accountName?: string
   website?: string
 }
 

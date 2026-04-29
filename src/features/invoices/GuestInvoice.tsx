@@ -5,6 +5,7 @@ import { LineItemsTable } from '../../components/ui/LineItemsTable'
 import { TotalsSidebar } from '../../components/ui/TotalsSidebar'
 import { AutocompleteInput, useAddressAutocomplete } from '../../components/ui/AutocompleteInput'
 import { formatCurrency } from '../../utils/invoice'
+import { printInvoiceHTML } from '../../utils/printInvoice'
 import { INVOICE_DESIGNS } from '../../types/invoice.types'
 import type { Invoice, InvoiceItem, BusinessInfo, ClientInfo } from '../../types/invoice.types'
 import type { Page } from '../../App'
@@ -12,11 +13,10 @@ import type { Page } from '../../App'
 interface Props { nav: (p: Page) => void }
 
 const today = new Date().toISOString().split('T')[0]
-const due30 = new Date(Date.now() + 30 * 864e5).toISOString().split('T')[0]
 
 const DEFAULT_BIZ: BusinessInfo = {
   name: '', abn: '', email: '', phone: '', address: '',
-  logo: '', bankName: '', bsb: '', accountNumber: '',
+  logo: '', bankName: '', bsb: '', accountNumber: '', accountName: '',
 }
 
 const DEFAULT_CLIENT: ClientInfo = {
@@ -35,7 +35,7 @@ export default function GuestInvoice({ nav }: Props) {
   const [form, setForm] = useState({
     invoiceNumber: 'INV-0001',
     invoiceDate: today,
-    dueDate: due30,
+    dueDate: '',  // optional
     notes: 'Thank you for your business. Payment is due within 30 days.',
     taxRate: 10,
   })
@@ -79,24 +79,7 @@ export default function GuestInvoice({ nav }: Props) {
     reader.readAsDataURL(file)
   }
 
-  const handlePrint = () => {
-    const html = document.getElementById('guest-print-area')?.innerHTML || ''
-    const w = window.open('', '_blank', 'width=900,height=700')
-    if (!w) return
-    const gf = 'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght'
-      + '@0,400;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600'
-      + '&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400'
-      + '&family=Syne:wght@400;700;800&family=IBM+Plex+Mono:wght@400;500'
-      + '&family=Fraunces:ital,wght@0,300;0,700;1,300'
-      + '&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap'
-    const doc = '<!DOCTYPE html><html><head>'
-      + '<link href="' + gf + '" rel="stylesheet">'
-      + '<style>*{box-sizing:border-box;margin:0;padding:0;}body{background:#fff;}</style>'
-      + '</head><body>' + html + '</body></html>'
-    w.document.write(doc)
-    w.document.close()
-    setTimeout(() => { w.focus(); w.print() }, 600)
-  }
+  const handlePrint = () => printInvoiceHTML('guest-print-area')
 
   const handleEmail = () => {
     if (!client.email) { setMsg('Please enter client email first.'); return }
@@ -233,6 +216,12 @@ export default function GuestInvoice({ nav }: Props) {
                   <label>Account Number</label>
                   <input value={biz.accountNumber || ''} onChange={e => setBiz(b => ({ ...b, accountNumber: e.target.value }))} />
                 </div>
+              </div>
+              <div className="fg">
+                <label>Account Name</label>
+                <input value={(biz as any).accountName || ''} onChange={e => setBiz(b => ({ ...b, accountName: e.target.value } as any))} placeholder="e.g. John Smith Trading" />
+              </div>
+              <div style={{display:'none'}}>
               </div>
             </div>
 

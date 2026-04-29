@@ -22,8 +22,8 @@ function BankBlock({ biz, bgColor, labelColor, valColor, borderColor }:
   const cells = [
     { l: 'Bank', v: biz.bankName },
     { l: 'BSB', v: biz.bsb },
-    { l: 'Account', v: biz.accountNumber },
-    { l: 'Reference', v: '' },
+    { l: 'Account Name', v: (biz as any).accountName },
+    { l: 'Account No.', v: biz.accountNumber },
   ].filter(c => c.v)
   if (cells.length === 0) return null
   return (

@@ -337,3 +337,76 @@ label{font-size:12px;color:var(--text2);margin-bottom:4px;display:block;letter-s
   .design-options{grid-template-columns:1fr 1fr}
   .status-picker{grid-template-columns:1fr}
 }
+
+/* ── NAV LOGO ── */
+.nav-logo-img{width:36px;height:36px;object-fit:contain;border-radius:50%}
+
+/* ── A4 PREVIEW MODAL ── */
+.preview-modal.a4-preview{max-width:820px;width:95vw}
+.preview-a4-wrap{padding:24px;background:#888;overflow-y:auto;max-height:82vh;display:flex;justify-content:center}
+.preview-a4-sheet{width:210mm;min-height:297mm;background:#fff;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+
+/* ── STATUS SELECT DROPDOWN ── */
+.status-select{border:none;border-radius:20px;font-size:10px;padding:3px 8px;letter-spacing:.5px;text-transform:uppercase;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;outline:none;appearance:none;-webkit-appearance:none;padding-right:20px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 6px center}
+.status-select.status-paid{background-color:rgba(45,212,167,.15);color:var(--teal);border:1px solid rgba(45,212,167,.3)!important}
+.status-select.status-sent{background-color:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.3)!important}
+.status-select.status-draft{background-color:rgba(255,255,255,.06);color:var(--text3);border:1px solid var(--border)!important}
+.status-select.status-overdue{background-color:rgba(255,107,107,.12);color:var(--red);border:1px solid rgba(255,107,107,.3)!important}
+.status-select.status-hold{background-color:rgba(177,123,222,.12);color:var(--purple);border:1px solid rgba(177,123,222,.3)!important}
+.status-select.status-disputed{background-color:rgba(255,140,66,.12);color:var(--amber);border:1px solid rgba(255,140,66,.3)!important}
+.status-select option{background:var(--navy3);color:var(--text)}
+
+/* ── DASHBOARD TABS ── */
+.dash-tabs{display:flex;gap:4px;background:var(--navy3);border:1px solid var(--border);border-radius:var(--radius);padding:4px;margin-bottom:20px;width:fit-content}
+.dash-tab{background:none;border:none;color:var(--text2);padding:8px 20px;border-radius:7px;cursor:pointer;font-size:14px;font-family:'DM Sans',sans-serif;transition:all .15s}
+.dash-tab.active{background:var(--navy5);color:var(--gold)}
+
+/* ── ACT BTN PRINT ── */
+.act-btn.print:hover{border-color:var(--teal)}
+.act-btn.edit:hover{border-color:var(--gold)}
+
+/* ── TAX ESTIMATOR ── */
+.tax-estimator{width:100%}
+.tax-est-grid{display:grid;grid-template-columns:1fr 300px;gap:20px}
+.tax-est-toggle{padding:12px 16px;background:var(--navy4);border-radius:8px;border:1px solid var(--border)}
+.tax-income-display{background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.05));border:1px solid var(--border2);border-radius:var(--radius-lg);padding:20px;text-align:center;margin:12px 0}
+.tid-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:6px}
+.tid-value{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--gold)}
+.tid-sub{font-size:12px;color:var(--text3);margin-top:4px}
+.tax-breakdown{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin:8px 0}
+.tbr-row{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border);background:var(--navy4)}
+.tbr-label{font-size:14px;font-weight:600;color:var(--text)}
+.tbr-desc{font-size:11px;color:var(--text3);margin-top:2px}
+.tbr-amount{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--text);white-space:nowrap}
+.tbr-total{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:var(--navy3);border-top:2px solid var(--border2);font-weight:700;font-size:15px;color:var(--gold)}
+.tbr-keep{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:rgba(255,140,66,.08);border-top:1px solid rgba(255,140,66,.2);font-size:13px;color:var(--text2)}
+.tax-brackets{background:var(--navy4);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin:12px 0}
+.tbk-title{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--text3);padding:10px 14px;border-bottom:1px solid var(--border)}
+.tbk-row{display:flex;align-items:center;gap:12px;padding:8px 14px;border-bottom:1px solid rgba(255,255,255,.03);font-size:12px}
+.tbk-row.tbk-active{background:rgba(201,168,76,.1);border-left:3px solid var(--gold)}
+.tbk-range{flex:1;color:var(--text2)}
+.tbk-rate{font-weight:700;color:var(--text);width:45px;text-align:right}
+.tbk-note{font-size:10px;color:var(--text3)}
+.tax-disclaimer{font-size:11px;color:var(--text3);line-height:1.7;padding:12px 14px;background:rgba(255,140,66,.06);border:1px solid rgba(255,140,66,.15);border-radius:8px}
+.tax-disclaimer a{color:var(--gold)}
+
+@media(max-width:900px){
+  .tax-est-grid{grid-template-columns:1fr}
+  .preview-a4-wrap{padding:12px}
+  .preview-a4-sheet{width:100%;min-height:auto}
+}
+
+/* ── UPCOMING FEATURES SECTION ── */
+.upcoming-section{padding:5rem 4rem;background:var(--navy2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.upcoming-grid{display:flex;flex-direction:column;gap:10px}
+.upcoming-card{display:flex;align-items:center;gap:14px;background:var(--navy3);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;transition:border-color .2s}
+.upcoming-card:hover{border-color:var(--border2)}
+.upcoming-icon{font-size:1.4rem;flex-shrink:0;width:36px;text-align:center}
+.upcoming-body{flex:1}
+.upcoming-label{font-weight:600;font-size:14px;color:var(--text)}
+.upcoming-desc{font-size:12px;color:var(--text3);margin-top:2px}
+.upcoming-status{font-size:10px;padding:3px 10px;border-radius:20px;letter-spacing:.5px;font-weight:600;white-space:nowrap;flex-shrink:0}
+.status-inprogress{background:rgba(201,168,76,.15);color:var(--gold);border:1px solid rgba(201,168,76,.3)}
+.status-planned{background:rgba(255,255,255,.05);color:var(--text3);border:1px solid var(--border)}
+
+@media(max-width:600px){.upcoming-section{padding:3rem 1.5rem}}

@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 
 export interface BusinessInfo {
   name:string; abn:string; email:string; phone:string; address:string
-  logo?:string; bsb?:string; accountNumber?:string; bankName?:string; website?:string
+  logo?:string; bsb?:string; accountNumber?:string; accountName?:string; bankName?:string; website?:string
 }
 export interface User {
   id:string; email:string; password:string

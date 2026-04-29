@@ -145,6 +145,9 @@ export default function Account({ nav }: { nav:(p:Page)=>void }) {
                 <div className="fg"><label>BSB</label><input value={biz.bsb} onChange={e=>setBiz(b=>({...b,bsb:e.target.value}))} placeholder="062-000"/></div>
                 <div className="fg"><label>Account Number</label><input value={biz.accountNumber} onChange={e=>setBiz(b=>({...b,accountNumber:e.target.value}))}/></div>
               </div>
+              <div className="fg"><label>Account Name</label><input value={(biz as any).accountName||''} onChange={e=>setBiz(b=>({...b,accountName:e.target.value}))} placeholder="e.g. John Smith Trading"/></div>
+              <div style={{display:'none'}}>
+              </div>
             </div>
 
             {/* Invoice design */}
