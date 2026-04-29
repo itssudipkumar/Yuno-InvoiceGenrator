@@ -410,3 +410,35 @@ label{font-size:12px;color:var(--text2);margin-bottom:4px;display:block;letter-s
 .status-planned{background:rgba(255,255,255,.05);color:var(--text3);border:1px solid var(--border)}
 
 @media(max-width:600px){.upcoming-section{padding:3rem 1.5rem}}
+
+/* ── Nav logo image ── */
+.nav-logo-img{width:34px;height:34px;border-radius:50%;object-fit:cover;flex-shrink:0}
+
+/* ── A4 preview modal ── */
+.preview-body{padding:20px;background:#e8e8e8;overflow-y:auto;max-height:80vh}
+.preview-a4{width:210mm;margin:0 auto;background:#fff;box-shadow:0 4px 24px rgba(0,0,0,.25);min-height:297mm}
+
+/* ── Status dropdown in table ── */
+.status-dropdown{background:transparent;border:1px solid;border-radius:20px;padding:3px 8px;font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;outline:none;-webkit-appearance:none;appearance:none;padding-right:20px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='6'%3E%3Cpath d='M0 0l4 6 4-6z' fill='%23888'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 6px center}
+.status-dropdown.status-paid{background-color:rgba(45,212,167,.15);color:var(--teal);border-color:rgba(45,212,167,.3)}
+.status-dropdown.status-sent{background-color:rgba(201,168,76,.12);color:var(--gold);border-color:rgba(201,168,76,.3)}
+.status-dropdown.status-draft{background-color:rgba(255,255,255,.06);color:var(--text3);border-color:var(--border)}
+.status-dropdown.status-overdue{background-color:rgba(255,107,107,.12);color:var(--red);border-color:rgba(255,107,107,.3)}
+.status-dropdown.status-hold{background-color:rgba(177,123,222,.12);color:var(--purple);border-color:rgba(177,123,222,.3)}
+.status-dropdown.status-disputed{background-color:rgba(255,140,66,.12);color:var(--amber);border-color:rgba(255,140,66,.3)}
+
+/* ── Print CSS — A4 exact ── */
+@media print{
+  @page{size:A4 portrait;margin:0}
+  body{width:210mm!important;height:297mm!important;background:#fff!important}
+  .yuno-nav,.create-sidebar,.design-selector,.create-header,.guest-banner,.preview-header,
+  .action-card,.design-badge-card,.signup-nudge,.dashboard-container,.page-dashboard,
+  nav,footer,.btn-gold,.btn-ghost{display:none!important}
+  .preview-a4,.invoice-print-wrap{width:210mm!important;min-height:297mm!important;box-shadow:none!important;page-break-inside:avoid}
+}
+
+/* ── Responsive preview ── */
+@media(max-width:750px){
+  .preview-a4{width:100%;min-height:auto}
+  .preview-body{padding:10px}
+}

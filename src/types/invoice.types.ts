@@ -16,10 +16,10 @@ export interface BusinessInfo {
   phone: string
   address: string
   logo?: string
+  accountName?: string
   bankName?: string
   bsb?: string
   accountNumber?: string
-  accountName?: string
   website?: string
 }
 
@@ -86,3 +86,6 @@ export const INVOICE_DESIGNS = [
   { id: 'flora',     label: 'Flora',      desc: 'Sage green organic' },
   { id: 'slate',     label: 'Slate',      desc: 'Ultra minimal Bauhaus' },
 ]
+
+// FIX #8: add accountName to BusinessInfo
+// Already added inline — this ensures it's in the main interface

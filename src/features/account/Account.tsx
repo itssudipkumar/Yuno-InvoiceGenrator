@@ -31,6 +31,7 @@ export default function Account({ nav }: { nav:(p:Page)=>void }) {
     accountNumber: user?.businessInfo.accountNumber||'',
     bankName: user?.businessInfo.bankName||'',
     logo: user?.businessInfo.logo||'',
+    accountName: user?.businessInfo.accountName||'',
   })
   const [design, setDesign] = useState(user?.invoiceDesign||'slate')
   const [profile, setProfile] = useState({email:user?.email||''})
