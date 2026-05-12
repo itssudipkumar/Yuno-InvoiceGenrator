@@ -16,7 +16,7 @@
 
 ## Why YUNO
 
-YUNO keeps invoicing simple, clean, and private. It gives you the tools to create professional invoices fast, preview them beautifully, and keep your business moving without clutter.
+YUNO keeps invoicing simple, clean, and private. It helps you create professional invoices quickly, preview them beautifully, and keep your business moving without clutter.
 
 | Clean workflow | Professional output | Private by design |
 |---|---|---|
@@ -25,81 +25,68 @@ YUNO keeps invoicing simple, clean, and private. It gives you the tools to creat
 **Powered by [TechnoForty](https://technoforty.com)**
 
 ---
----
 
-## Support
+## Preview
 
-If YUNO saves you time, consider supporting TechnoForty:
+<div align="center">
 
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-C9A84C?style=for-the-badge&labelColor=0A0F1E)](https://www.buymeacoffee.com/technoforty)
+<div style="max-width: 900px; margin: 0 auto;">
+  <div style="margin-bottom: 24px;">
+    <img src="src/assets/yuno1.jpg" alt="YUNO dashboard preview" style="width: 100%; border-radius: 16px; box-shadow: 0 10px 30px rgba(201,168,76,0.18); border: 1px solid #C9A84C;">
+    <div style="margin-top: 10px;"><strong>Dashboard</strong></div>
+  </div>
 
----
+  <div style="margin-bottom: 24px;">
+    <img src="src/assets/yuno2.jpg" alt="YUNO invoice form preview" style="width: 100%; border-radius: 16px; box-shadow: 0 10px 30px rgba(201,168,76,0.18); border: 1px solid #C9A84C;">
+    <div style="margin-top: 10px;"><strong>Invoice Builder</strong></div>
+  </div>
 
-## License
+  <div>
+    <img src="src/assets/yuno3.jpg" alt="YUNO template preview" style="width: 100%; border-radius: 16px; box-shadow: 0 10px 30px rgba(201,168,76,0.18); border: 1px solid #C9A84C;">
+    <div style="margin-top: 10px;"><strong>Template Library</strong></div>
+  </div>
+</div>
 
-MIT © [TechnoForty](https://technoforty.com)
-- **Tax Return** — Annual individual/company tax return (Oct 31)
-- **TPAR** — Taxable Payments Annual Report (Aug 28)
-
----
-
-## Roadmap
-
-- [ ] PDF export (jsPDF)
-- [ ] Revenue chart on dashboard
-- [ ] Recurring invoice templates
-- [ ] Export data as JSON backup
-- [ ] Import/restore data
-- [ ] Mobile hamburger nav
-- [ ] Duplicate invoice function
-- [ ] Email via EmailJS (200 free/month)
-- [ ] Multi-currency support
+</div>
 
 ---
 
-## Contributing
+## Try It
 
-Contributions are welcome. Please open an issue first to discuss what you'd like to change.
+<div align="center">
+
+<img src="src/assets/QR.png" alt="QR code for YUNO" style="width: 180px; height: 180px; border-radius: 14px; padding: 10px; border: 3px solid #C9A84C; background: #fff;">
+
+### Scan to open the latest version
+
+Works on desktop and mobile. No registration needed.
+
+</div>
+
+---
+
+## Highlights
+
+- 8 invoice designs with a polished, professional look
+- GST-aware calculations and Australian business fields
+- Guest and registered user flows
+- Saved clients and invoice history
+- Print-ready output for fast sharing
+- Local-first storage for privacy and control
+
+---
+
+## Getting Started
 
 ```bash
-# Fork the repo, then:
-git checkout -b feature/your-feature
-git commit -m "feat: your feature description"
-git push origin feature/your-feature
-# Open a pull request
+git clone https://github.com/itssudipkumar/Yuno-InvoiceGenrator.git
+cd Yuno-InvoiceGenrator
+pnpm install
+pnpm dev
 ```
 
----
+Open the app at [http://localhost:5173](http://localhost:5173).
 
-## 💬 Support YUNO
-
-YUNO is completely **free and open-source**. If it saves you time and money, we'd love your support!
-
-<div align="center">
-
-[![Buy Me A Coffee](https://img.shields.io/badge/☕%20Buy%20Me%20A%20Coffee-C9A84C?style=for-the-badge&labelColor=0A0F1E)](https://www.buymeacoffee.com/technoforty)
-[![Star on GitHub](https://img.shields.io/badge/⭐%20Star%20Us-GitHub-yellow?style=for-the-badge&labelColor=0A0F1E)](https://github.com/itssudipkumar/InvoGenrator)
-
-</div>
-
----
-
-## 📄 License
-
-MIT © [TechnoForty](https://technoforty.com.au) — Free to use.
-
----
-
-<div align="center">
-
-### 🌟 Built with ❤️ by [TechnoForty](https://technoforty.com.au)
-
-**YUNO** — Professional Invoice Management Made Simple
-
-[Live Demo](https://github.com/itssudipkumar/InvoGenrator) • [Report Bug](https://github.com/itssudipkumar/InvoGenrator/issues) • [Request Feature](https://github.com/itssudipkumar/InvoGenrator/issues)
-
-</div>
-=======
 ### Build
 
 ```bash
@@ -119,4 +106,3 @@ If YUNO saves you time, consider supporting TechnoForty:
 ## License
 
 MIT © [TechnoForty](https://technoforty.com)
->>>>>>> c3e09f4 (docs: polish README)
