@@ -93,16 +93,6 @@ pnpm dev
 
 Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-### 🏗️ Build for Production
-
-```bash
-pnpm build
-```
-
-Output goes to `dist/`. Deploy to any static host (GitHub Pages, Netlify, Vercel, Cloudflare Pages).
-
----
-
 ## ✨ Core Features
 
 ### 📄 Invoice Creation
@@ -308,13 +298,13 @@ YUNO is completely **free and open-source**. If it saves you time and money, we'
 
 ## 📄 License
 
-MIT © [TechnoForty](https://technoforty.com) — Free to use, modify, and distribute.
+MIT © [TechnoForty](https://technoforty.com.au) — Free to use.
 
 ---
 
 <div align="center">
 
-### 🌟 Built with ❤️ by [TechnoForty](https://technoforty.com)
+### 🌟 Built with ❤️ by [TechnoForty](https://technoforty.com.au)
 
 **YUNO** — Professional Invoice Management Made Simple
 
