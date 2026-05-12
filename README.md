@@ -1,82 +1,83 @@
-# YUNO — Professional Invoice Generator
+# 🎯 YUNO — Professional Invoice Generator
 
-> **Free, private invoice management for Australian businesses.**  
-> Built for sole traders, freelancers, and small business owners.
+<div align="center">
 
-![YUNO](https://img.shields.io/badge/version-3.0.0-C9A84C?style=flat-square&labelColor=0A0F1E)
-![License](https://img.shields.io/badge/license-MIT-2DD4A7?style=flat-square&labelColor=0A0F1E)
-![Built with React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&labelColor=0A0F1E&logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&labelColor=0A0F1E&logo=typescript)
+> **Free, Private, Powerful Invoice Management for Australian Businesses**  
+> Built for sole traders, freelancers, and small business owners who demand simplicity and security.
+
+[![YUNO](https://img.shields.io/badge/version-3.0.0-C9A84C?style=flat-square&labelColor=0A0F1E)](https://github.com/itssudipkumar/InvoGenrator)
+[![License](https://img.shields.io/badge/license-MIT-2DD4A7?style=flat-square&labelColor=0A0F1E)](LICENSE)
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&labelColor=0A0F1E&logo=react)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&labelColor=0A0F1E&logo=typescript)](https://www.typescriptlang.org)
+
+</div>
 
 ---
 
 ## What is YUNO?
 
-YUNO is a **100% free**, browser-based invoice generator designed specifically for the Australian market. No subscriptions, no ads, no servers — your data stays on your device.
+**YUNO** is a **100% free**, browser-based invoice generator designed specifically for the Australian market. 
 
-- ✅ Create professional invoices in seconds
-- ✅ 8 beautiful invoice designs to choose from
-- ✅ Australian tax system support (GST, ABN, BAS reminders)
-- ✅ Works offline after first load
-- ✅ Your data never leaves your device
+✨ **No subscriptions. No ads. No servers. Your data stays on YOUR device.**
+
+### Why Choose YUNO?
+
+| Feature | Benefit |
+|---------|---------|
+| ✅ **8 Professional Designs** | Choose the perfect template for your brand |
+| ✅ **100% Private** | Your invoices stay on your device — encrypted in localStorage |
+| ✅ **Australian Tax Ready** | GST, ABN, BAS reminders — all built-in |
+| ✅ **Works Offline** | Create invoices anywhere, anytime |
+| ✅ **Completely Free** | Forever. No hidden charges. |
 
 **Powered by [TechnoForty](https://technoforty.com)**
 
 ---
 
-## Features
+## 🎨 Features Showcase
 
-### 📄 Invoice Creation
-- 8 professional invoice designs (Prestige, Frost, Terra, Prism, Linen, Blueprint, Flora, Slate)
-- Auto-fills business details from your saved profile
-- Australian address autocomplete (OpenStreetMap — no API key needed)
-- Real-time GST calculations
-- Logo support on every invoice
-- Bank details printed directly on invoice
-- Generate, save as draft, preview, print, or email
+<div align="center">
+  
+### See YUNO in Action
 
-### 👤 Guest Mode
-Non-registered users can still create invoices with:
-- Full business info form (name, ABN, email, phone, address)
-- Logo upload
-- Bank details
-- Client information with AU address autocomplete
-- All 8 invoice designs
+<table style="border: none; background: transparent;">
+  <tr>
+    <td width="33%"><img src="src/assets/yuno1.jpg" alt="Dashboard & Invoice Management" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(201,168,76,0.2); border: 2px solid #C9A84C;"></td>
+    <td width="33%"><img src="src/assets/yuno2.jpg" alt="Invoice Creation Form" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(201,168,76,0.2); border: 2px solid #C9A84C;"></td>
+    <td width="33%"><img src="src/assets/yuno3.jpg" alt="Professional Invoice Templates" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(201,168,76,0.2); border: 2px solid #C9A84C;"></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>📊 Smart Dashboard</strong></td>
+    <td align="center"><strong>📝 Easy Invoice Form</strong></td>
+    <td align="center"><strong>✨ Beautiful Templates</strong></td>
+  </tr>
+</table>
 
-### 🏢 Registered Users
-- Business profile saved once — auto-fills every invoice
-- Client management with saved profiles
-- Invoice history & dashboard
-- Manual status management: Sent / Paid / Overdue / On Hold / Disputed / Draft
-- Status notes per invoice
-
-### 📊 Dashboard
-- Revenue overview (total invoiced, received, pending, overdue)
-- Invoice history with search & filter
-- One-click status updates
-- Invoice preview from dashboard
-
-### 🇦🇺 Australian Tax Reminders
-- BAS (Business Activity Statement) quarterly deadlines
-- Superannuation Guarantee reminders
-- PAYG & TPAR deadline tracking
-- All dates auto-calculated for current financial year
-
-### 🔒 Privacy First
-- 100% localStorage — no backend, no cloud
-- No data transmitted anywhere
-- Works offline
-- You own and control all your data
+</div>
 
 ---
 
-## Getting Started
+## 🚀 Quick Start
 
-### Prerequisites
+### Try YUNO Now! 📱
+
+<div align="center">
+
+**Scan to access the live demo:**
+
+<img src="src/assets/QR.png" alt="QR Code - Try YUNO Now" style="width: 150px; height: 150px; border-radius: 12px; padding: 10px; border: 3px solid #C9A84C;">
+
+**No registration required • Works on desktop & mobile**
+
+</div>
+
+### 💻 Local Development
+
+**Prerequisites:**
 - Node.js 18+
-- pnpm (or npm/yarn)
+- pnpm (recommended) — or npm/yarn
 
-### Installation
+**Installation:**
 
 ```bash
 # Clone the repository
@@ -92,7 +93,7 @@ pnpm dev
 
 Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-### Build for Production
+### 🏗️ Build for Production
 
 ```bash
 pnpm build
@@ -102,7 +103,58 @@ Output goes to `dist/`. Deploy to any static host (GitHub Pages, Netlify, Vercel
 
 ---
 
-## Project Structure
+## ✨ Core Features
+
+### 📄 Invoice Creation
+- **8 professional invoice designs** — Prestige, Frost, Terra, Prism, Linen, Blueprint, Flora, Slate
+- Auto-fill business details from your saved profile
+- Australian address autocomplete powered by OpenStreetMap (free, no API key)
+- Real-time GST calculations
+- Logo support on every invoice
+- Bank details printed directly on invoice
+- Generate, save as draft, preview, print, or email instantly
+
+### 👤 Guest Mode
+Perfect for one-off invoices — no registration needed:
+- Full business info form (ABN, name, email, phone, address)
+- Logo upload support
+- Complete bank details
+- Client information with AU address autocomplete
+- Access to all 8 invoice designs
+- Save invoices to your device
+
+### 🏢 Registered Users
+Power up with a saved profile:
+- Business profile saved once — auto-fills every invoice
+- Client management with saved profiles for recurring customers
+- Full invoice history with dashboard
+- Manual status management: **Sent** | **Paid** | **Overdue** | **On Hold** | **Disputed** | **Draft**
+- Add status notes per invoice for tracking
+
+### 📊 Dashboard
+Your business at a glance:
+- Revenue overview (total invoiced, received, pending, overdue)
+- Invoice history with search, filter & sorting
+- One-click status updates
+- Invoice preview from dashboard
+- Quick export functionality
+
+### 🇦🇺 Australian Tax Reminders
+Built for Australian business owners:
+- **BAS** — Quarterly Business Activity Statements (Oct 28, Jan 28, Apr 28, Jul 28)
+- **Superannuation** — Quarterly contribution reminders
+- **PAYG** & **TPAR** — Annual deadline tracking
+- All dates auto-calculated for the current financial year
+
+### 🔒 Privacy First
+Your data, your control:
+- ✅ 100% localStorage — no backend servers
+- ✅ No data transmitted anywhere
+- ✅ Works offline after first load
+- ✅ You own and control all your data
+- ✅ Export or delete anytime
+
+---
 
 ```
 src/
@@ -241,21 +293,31 @@ git push origin feature/your-feature
 
 ---
 
-## Support YUNO
+## 💬 Support YUNO
 
-YUNO is completely free. If it saves you time and money, consider buying us a coffee!
+YUNO is completely **free and open-source**. If it saves you time and money, we'd love your support!
 
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-☕-C9A84C?style=flat-square&labelColor=0A0F1E)](https://www.buymeacoffee.com/technoforty)
+<div align="center">
+
+[![Buy Me A Coffee](https://img.shields.io/badge/☕%20Buy%20Me%20A%20Coffee-C9A84C?style=for-the-badge&labelColor=0A0F1E)](https://www.buymeacoffee.com/technoforty)
+[![Star on GitHub](https://img.shields.io/badge/⭐%20Star%20Us-GitHub-yellow?style=for-the-badge&labelColor=0A0F1E)](https://github.com/itssudipkumar/InvoGenrator)
+
+</div>
 
 ---
 
-## License
+## 📄 License
 
-MIT © [TechnoForty](https://technoforty.com)
+MIT © [TechnoForty](https://technoforty.com) — Free to use, modify, and distribute.
 
 ---
 
 <div align="center">
-  <strong>YUNO</strong> — Professional Invoice Management<br>
-  <em>Powered by TechnoForty</em>
+
+### 🌟 Built with ❤️ by [TechnoForty](https://technoforty.com)
+
+**YUNO** — Professional Invoice Management Made Simple
+
+[Live Demo](https://github.com/itssudipkumar/InvoGenrator) • [Report Bug](https://github.com/itssudipkumar/InvoGenrator/issues) • [Request Feature](https://github.com/itssudipkumar/InvoGenrator/issues)
+
 </div>
