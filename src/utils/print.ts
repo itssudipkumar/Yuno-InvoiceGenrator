@@ -1,3 +1,5 @@
+import invoiceStyles from '../components/invoice/invoice-designs.css?raw'
+
 const PRINT_CSS = `
   @page { size: A4 portrait; margin: 0; }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -19,7 +21,7 @@ export function printInvoice(elementId: string) {
   const doc = '<!DOCTYPE html><html><head>'
     + '<meta charset="UTF-8">'
     + '<link href="' + GF + '" rel="stylesheet">'
-    + '<style>' + PRINT_CSS + '</style>'
+    + '<style>' + PRINT_CSS + invoiceStyles + '</style>'
     + '</head><body>'
     + '<div class="invoice-print-wrap">' + html + '</div>'
     + '<script>window.onload=function(){window.focus();window.print();window.onafterprint=function(){window.close();};}<\/script>'

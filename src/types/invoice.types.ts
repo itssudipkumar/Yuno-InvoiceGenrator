@@ -53,6 +53,21 @@ export interface Invoice {
   updatedAt: string
 }
 
+export type RecurringFrequency = 'weekly' | 'fortnightly' | 'monthly' | 'quarterly' | 'yearly'
+
+export interface RecurringInvoice {
+  id: string
+  userId: string
+  name: string
+  frequency: RecurringFrequency
+  anchorDate: string
+  nextInvoiceDate: string
+  active: boolean
+  template: Invoice
+  createdAt: string
+  updatedAt: string
+}
+
 // ─── Client Types ─────────────────────────────────────────
 export interface Client {
   id: string
@@ -77,15 +92,20 @@ export const STATUS_OPTIONS: Array<{ v: InvoiceStatus; label: string; desc: stri
 
 // ─── Invoice Designs ──────────────────────────────────────
 export const INVOICE_DESIGNS = [
-  { id: 'prestige',  label: 'Prestige',   desc: 'Luxury dark, Cormorant serif' },
-  { id: 'frost',     label: 'Frost',      desc: 'Corporate navy gradient' },
-  { id: 'terra',     label: 'Terra',      desc: 'Warm terracotta & cream' },
-  { id: 'prism',     label: 'Prism',      desc: 'Light with indigo geometric' },
-  { id: 'linen',     label: 'Linen',      desc: 'Editorial cream & italic' },
-  { id: 'blueprint', label: 'Blueprint',  desc: 'Monospace technical' },
-  { id: 'flora',     label: 'Flora',      desc: 'Sage green organic' },
-  { id: 'slate',     label: 'Slate',      desc: 'Ultra minimal Bauhaus' },
-]
+  { id: 'slate', label: 'Slate', desc: 'Clean, understated monochrome' },
+  { id: 'prestige', label: 'Prestige', desc: 'Elegant charcoal and gold' },
+  { id: 'frost', label: 'Frost', desc: 'Confident navy and blue' },
+  { id: 'terra', label: 'Terra', desc: 'Warm terracotta and cream' },
+  { id: 'flora', label: 'Flora', desc: 'Calm, natural sage' },
+] as const
 
-// FIX #8: add accountName to BusinessInfo
-// Already added inline — this ensures it's in the main interface
+export type InvoiceDesign = typeof INVOICE_DESIGNS[number]['id']
+
+export function resolveInvoiceDesign(design: string): InvoiceDesign {
+  const legacyDesigns: Record<string, InvoiceDesign> = {
+    prism: 'frost',
+    linen: 'terra',
+    blueprint: 'slate',
+  }
+  return INVOICE_DESIGNS.find(option => option.id === design)?.id ?? legacyDesigns[design] ?? 'slate'
+}

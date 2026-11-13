@@ -2,51 +2,121 @@
 export type { Invoice, InvoiceItem, Client, InvoiceStatus, BusinessInfo, ClientInfo } from '../types/invoice.types'
 
 import type { Invoice, Client } from '../types/invoice.types'
+import type { RecurringFrequency, RecurringInvoice } from '../types/invoice.types'
+import { addDays, addMonths, addYears, differenceInCalendarDays, format, parseISO } from 'date-fns'
+import { supabase } from './supabase'
 
-const INV_KEY = 'yuno_invoices'
-const CLI_KEY = 'yuno_clients'
+type CloudTable = 'yuno_invoices' | 'yuno_clients' | 'yuno_recurring_invoices'
 
-export function getInvoices(userId: string): Invoice[] {
-  try {
-    const all: Invoice[] = JSON.parse(localStorage.getItem(INV_KEY) || '[]')
-    return all.filter(i => i.userId === userId)
-      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-  } catch { return [] }
+async function list<T>(table: CloudTable, userId: string): Promise<T[]> {
+  const result: T[] = []
+  const pageSize = 1000
+  for (let offset = 0; ;) {
+    const { data, error } = await supabase.from(table).select('data').eq('owner_id', userId)
+      .order('id').range(offset, offset + pageSize - 1)
+    if (error) throw error
+    result.push(...data.map(row => row.data as T))
+    if (data.length === 0) return result
+    offset += data.length
+  }
 }
 
-export function saveInvoice(inv: Invoice): void {
-  const all: Invoice[] = JSON.parse(localStorage.getItem(INV_KEY) || '[]')
-  const idx = all.findIndex(i => i.id === inv.id)
-  if (idx !== -1) all[idx] = inv; else all.push(inv)
-  localStorage.setItem(INV_KEY, JSON.stringify(all))
+async function save<T extends { id: string; userId: string }>(table: CloudTable, value: T): Promise<void> {
+  const { error } = await supabase.from(table).upsert({ owner_id: value.userId, id: value.id, data: value })
+  if (error) throw error
 }
 
-export function deleteInvoice(id: string): void {
-  const all: Invoice[] = JSON.parse(localStorage.getItem(INV_KEY) || '[]')
-  localStorage.setItem(INV_KEY, JSON.stringify(all.filter(i => i.id !== id)))
+async function remove(table: CloudTable, id: string, userId: string): Promise<void> {
+  const { error } = await supabase.from(table).delete().eq('owner_id', userId).eq('id', id)
+  if (error) throw error
 }
 
-export function getClients(userId: string): Client[] {
-  try {
-    const all: Client[] = JSON.parse(localStorage.getItem(CLI_KEY) || '[]')
-    return all.filter(c => c.userId === userId)
-  } catch { return [] }
+export async function getInvoices(userId: string): Promise<Invoice[]> {
+  return (await list<Invoice>('yuno_invoices', userId))
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+}
+export const saveInvoice = (invoice: Invoice) => save('yuno_invoices', invoice)
+export const deleteInvoice = (id: string, userId: string) => remove('yuno_invoices', id, userId)
+export const getClients = (userId: string) => list<Client>('yuno_clients', userId)
+export const saveClient = (client: Client) => save('yuno_clients', client)
+export const deleteClient = (id: string, userId: string) => remove('yuno_clients', id, userId)
+export async function getRecurringInvoices(userId: string): Promise<RecurringInvoice[]> {
+  return (await list<RecurringInvoice>('yuno_recurring_invoices', userId))
+    .sort((a, b) => a.nextInvoiceDate.localeCompare(b.nextInvoiceDate))
+}
+export const saveRecurringInvoice = (schedule: RecurringInvoice) => save('yuno_recurring_invoices', schedule)
+export const deleteRecurringInvoice = (id: string, userId: string) => remove('yuno_recurring_invoices', id, userId)
+
+function nextOccurrence(date: string, frequency: RecurringFrequency, anchorDate: string): string {
+  const parsed = parseISO(date)
+  let next: Date
+  if (frequency === 'weekly') next = addDays(parsed, 7)
+  else if (frequency === 'fortnightly') next = addDays(parsed, 14)
+  else if (frequency === 'monthly' || frequency === 'quarterly') {
+    next = addMonths(parsed, frequency === 'monthly' ? 1 : 3)
+    const anchorDay = Number(anchorDate.slice(-2))
+    const lastDay = new Date(next.getFullYear(), next.getMonth() + 1, 0).getDate()
+    next.setDate(Math.min(anchorDay, lastDay))
+  } else {
+    next = addYears(parsed, 1)
+    const anchorDay = Number(anchorDate.slice(-2))
+    const lastDay = new Date(next.getFullYear(), next.getMonth() + 1, 0).getDate()
+    next.setDate(Math.min(anchorDay, lastDay))
+  }
+  return format(next, 'yyyy-MM-dd')
 }
 
-export function saveClient(c: Client): void {
-  const all: Client[] = JSON.parse(localStorage.getItem(CLI_KEY) || '[]')
-  const idx = all.findIndex(x => x.id === c.id)
-  if (idx !== -1) all[idx] = c; else all.push(c)
-  localStorage.setItem(CLI_KEY, JSON.stringify(all))
+export async function processDueRecurringInvoices(userId: string, now = new Date()): Promise<number> {
+  const today = format(now, 'yyyy-MM-dd')
+  const schedules = await getRecurringInvoices(userId)
+  let generated = 0
+
+  for (const schedule of schedules) {
+    let nextDate = schedule.nextInvoiceDate
+    while (schedule.active && nextDate <= today && generated < 100) {
+      const invoiceDate = parseISO(nextDate)
+      const templateDate = parseISO(schedule.template.invoiceDate)
+      const dueOffset = schedule.template.dueDate
+        ? differenceInCalendarDays(parseISO(schedule.template.dueDate), templateDate)
+        : null
+      const dueDate = dueOffset === null ? '' : format(addDays(invoiceDate, dueOffset), 'yyyy-MM-dd')
+
+      const invoice: Invoice = {
+        ...schedule.template,
+        id: `recurring-${schedule.id}-${nextDate}`,
+        userId,
+        invoiceNumber: '',
+        status: 'draft',
+        statusNote: `Created from recurring schedule: ${schedule.name}`,
+        invoiceDate: nextDate,
+        dueDate,
+        items: schedule.template.items.map(item => ({ ...item })),
+        client: { ...schedule.template.client },
+        businessInfo: { ...schedule.template.businessInfo },
+        createdAt: now.toISOString(),
+        updatedAt: now.toISOString(),
+      }
+      const followingDate = nextOccurrence(nextDate, schedule.frequency, schedule.anchorDate)
+      const { data, error } = await supabase.rpc('yuno_generate_recurring', {
+        schedule_id: schedule.id,
+        occurrence_date: nextDate,
+        next_date: followingDate,
+        invoice_data: invoice,
+      })
+      if (error) throw error
+      if (!data) break
+      nextDate = followingDate
+      generated += 1
+    }
+
+    if (generated >= 100) break
+  }
+
+  return generated
 }
 
-export function deleteClient(id: string): void {
-  const all: Client[] = JSON.parse(localStorage.getItem(CLI_KEY) || '[]')
-  localStorage.setItem(CLI_KEY, JSON.stringify(all.filter(c => c.id !== id)))
-}
-
-export function generateInvoiceNumber(userId: string): string {
-  const invoices = getInvoices(userId)
+export async function generateInvoiceNumber(userId: string): Promise<string> {
+  const invoices = await getInvoices(userId)
   const nums = invoices.map(i => {
     const m = i.invoiceNumber.match(/(\d+)$/)
     return m ? parseInt(m[1]) : 0

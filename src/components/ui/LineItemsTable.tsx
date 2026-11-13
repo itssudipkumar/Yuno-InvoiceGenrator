@@ -42,37 +42,40 @@ export function LineItemsTable({ items, onChange }: Props) {
           <tbody>
             {items.map(item => (
               <tr key={item.id}>
-                <td>
+                <td data-label="Description">
                   <input
                     className="desc-input"
+                    aria-label="Item description"
                     value={item.description}
                     onChange={e => update(item.id, 'description', e.target.value)}
                     placeholder="Service or product description"
                   />
                 </td>
-                <td>
+                <td data-label="Quantity">
                   <input
                     type="number"
                     className="num-input"
+                    aria-label="Quantity"
                     value={item.quantity}
                     min={1}
                     onChange={e => update(item.id, 'quantity', +e.target.value)}
                   />
                 </td>
-                <td>
+                <td data-label="Unit price">
                   <input
                     type="number"
                     className="num-input"
+                    aria-label="Unit price"
                     value={item.unitPrice}
                     min={0}
                     step={0.01}
                     onChange={e => update(item.id, 'unitPrice', +e.target.value)}
                   />
                 </td>
-                <td className="item-amt">{formatCurrency(item.amount)}</td>
-                <td>
+                <td className="item-amt" data-label="Amount">{formatCurrency(item.amount)}</td>
+                <td className="item-remove">
                   {items.length > 1 && (
-                    <button className="remove-item" onClick={() => remove(item.id)}>✕</button>
+                    <button className="remove-item" aria-label={`Remove ${item.description || 'item'}`} onClick={() => remove(item.id)}>✕</button>
                   )}
                 </td>
               </tr>

@@ -1,0 +1,173 @@
+/* Shared workspace palette. Invoice documents keep their own design styles. */
+:is(.page-auth, .page-create, .page-clients, .page-account) {
+  --navy: #f3f5ef;
+  --navy2: #fff;
+  --navy3: #fff;
+  --navy4: #f5f8f3;
+  --navy5: #e8f0e8;
+  --gold: #315d50;
+  --gold-light: #234b3f;
+  --gold-dim: #eaf2e9;
+  --teal: #317b58;
+  --red: #b35350;
+  --amber: #956723;
+  --purple: #6a5a88;
+  --text: #203832;
+  --text2: #60766a;
+  --text3: #71847a;
+  --border: #e2eae1;
+  --border2: #ccdbcd;
+  min-height: 100vh;
+  background: #f3f5ef;
+  color: var(--text);
+}
+
+.nav-brand {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+}
+.nav-menu-toggle { display: none; }
+.preview-scroll-hint { display: none; }
+
+/* A small, consistent gold detail connects the different page palettes. */
+.yuno-nav { border-bottom-color: rgba(179, 147, 84, .45) !important; }
+.nav-brand-name { color: #80602d !important; }
+.page-landing .nav-brand-name { color: #d3b77b !important; }
+.workspace-eyebrow, .dashboard-eyebrow { color: #8d6e3c; }
+.workspace-eyebrow::before { content: ''; display: inline-block; width: 18px; height: 2px; margin: 0 8px 3px 0; background: #b39354; }
+.page-dashboard .dashboard-eyebrow > span:first-child { background: #b39354; }
+:is(.page-auth, .page-account) :is(.auth-card, .account-header) { border-top: 3px solid #b39354; }
+.page-landing .section-eyebrow { color: #d3b77b; }
+
+:is(.page-auth, .page-create, .page-clients, .page-account) .yuno-nav {
+  height: 72px;
+  background: #fff;
+  border-color: #e4eae4;
+}
+:is(.page-auth, .page-create, .page-clients, .page-account) .nav-brand-name { color: #2f5044; font-size: 1.15rem; }
+:is(.page-auth, .page-create, .page-clients, .page-account) .nav-btn-logout { color: #697970; border-color: #e1e9e1; }
+:is(.page-auth, .page-create, .page-clients, .page-account) :is(.btn-gold, .nav-btn-primary, .action-btn.generate) { background: #315d50; color: #fff; }
+:is(.page-auth, .page-create, .page-clients, .page-account) :is(.btn-gold, .nav-btn-primary, .action-btn.generate):hover { background: #234b3f; }
+:is(.page-auth, .page-create, .page-clients, .page-account) :is(input, textarea, select):focus { border-color: #608d75; box-shadow: 0 0 0 3px rgba(79, 133, 100, .12); }
+:is(.page-auth, .page-create, .page-clients, .page-account) :is(.form-card, .totals-card, .action-card, .client-card, .account-header, .modal-card, .auth-card) {
+  border-color: #e2eae1;
+  box-shadow: 0 5px 22px rgba(37, 61, 43, .035);
+}
+:is(.page-auth, .page-create, .page-clients, .page-account) .form-card h3,
+.page-create .totals-card h3 { color: #315d50; font-size: 15px; }
+.page-create .guest-banner { background: #e8f1e5; border-color: #d6e5d4; color: #426650; }
+.page-create .guest-banner button { color: #315d50; border-color: #bbd2bc; }
+.page-create .action-btn.preview { color: #5e557a; }
+.page-create .action-btn.email { color: #317b58; }
+.page-create .create-header, .page-clients .clients-header { gap: 20px; align-items: flex-end; }
+.workspace-eyebrow { margin-bottom: 9px; color: #80602d; font-size: 10px; font-weight: 700; letter-spacing: .1em; }
+.workspace-subtitle { margin-top: 6px; color: #718079; font-size: 13px; }
+.page-create .create-header h1, .page-clients .clients-header h1 { font-size: clamp(1.7rem, 3vw, 2.25rem); letter-spacing: -.035em; }
+.page-create .create-container, .page-clients .clients-container, .page-account .account-container { padding-top: 36px; padding-bottom: 60px; }
+.page-create .create-layout { grid-template-columns: minmax(0, 1fr) 280px; }
+.page-create .create-form, .page-create .create-sidebar { min-width: 0; }
+.page-clients .client-card { min-width: 0; padding: 22px; }
+.page-clients .client-email { overflow-wrap: anywhere; }
+.page-clients .client-actions .act-btn { min-width: 36px; min-height: 36px; }
+.page-account .account-header { padding: 26px; }
+.page-account .account-tab.active, .page-auth .auth-tab.active { background: #fff; color: #315d50; box-shadow: 0 2px 6px rgba(37, 61, 43, .08); }
+.page-auth .auth-container { min-height: calc(100vh - 72px); }
+.page-auth .auth-card { max-width: 480px; border-radius: 20px; }
+.page-auth .auth-logo { justify-content: flex-start; }
+.page-auth .auth-logo circle { fill: #315d50; }
+.page-auth .auth-logo text { fill: #fff; }
+.auth-intro { margin: 0 0 24px; }
+.auth-intro h1 { margin-bottom: 8px; font-size: 1.8rem; letter-spacing: -.025em; }
+.auth-intro > p:last-child { color: #718079; font-size: 13px; }
+.page-auth .auth-tabs, .page-account .account-tabs { background: #eaf0e8; }
+.page-create .preview-overlay, .page-clients .modal-overlay { background: rgba(25, 42, 34, .68); }
+.page-clients .modal-card { max-height: calc(100dvh - 2rem); overflow-y: auto; }
+.page-create .preview-a4-wrap { overflow: auto; justify-content: safe center; }
+
+@media (max-width: 1024px) {
+  .page-create .create-layout { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 700px) {
+  :is(.page-landing, .page-dashboard, .page-auth, .page-create, .page-clients, .page-account) .yuno-nav {
+    height: 64px;
+    padding: 0 16px;
+  }
+  .yuno-nav .nav-menu-toggle {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid currentColor;
+    border-radius: 10px;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+  }
+  :is(.page-landing, .page-dashboard, .page-auth, .page-create, .page-clients, .page-account) .yuno-nav .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    max-width: none;
+    padding: 10px 16px 16px;
+    overflow: visible;
+    background: var(--navy2);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 12px 20px rgba(20, 38, 29, .1);
+  }
+  .page-dashboard .yuno-nav .nav-links { background: #fff; border-color: #e4eae4; }
+  :is(.page-landing, .page-dashboard, .page-auth, .page-create, .page-clients, .page-account) .yuno-nav .nav-links--open { display: flex; }
+  .yuno-nav .nav-links :is(.nav-link, .nav-btn-primary, .nav-btn-logout) { min-height: 44px; text-align: left; }
+  :is(.page-create, .page-clients, .page-account) :is(.create-container, .clients-container, .account-container) { padding: 24px 16px 48px; }
+  .page-create .create-header, .page-clients .clients-header { align-items: flex-start; flex-direction: column; }
+  .page-clients .clients-header .btn-gold { width: 100%; min-height: 44px; }
+  .page-clients .clients-grid { grid-template-columns: minmax(0, 1fr); }
+  .page-create .guest-banner { padding: 12px 16px; flex-wrap: wrap; }
+  .page-create .form-card, .page-create .totals-card, .page-create .action-card { padding: 18px; }
+  .page-create .action-btn { min-height: 44px; }
+  .page-account .account-tabs { overflow-x: auto; }
+  .page-account .account-tab { flex: 1 0 auto; min-height: 44px; padding: 9px 14px; }
+  .page-account .account-header { flex-wrap: wrap; gap: 14px; padding: 20px; }
+  .page-account .account-header > div:nth-child(2) { min-width: 0; overflow-wrap: anywhere; }
+  .page-account .account-header .btn-logout { flex: 0 0 100%; min-height: 44px; }
+  .page-auth .auth-container { min-height: calc(100vh - 64px); padding: 24px 16px; align-items: flex-start; }
+  .page-auth .auth-card { padding: 25px 20px; }
+  :is(.page-create, .page-dashboard) .preview-modal { width: 100%; max-height: calc(100dvh - 2rem); }
+  :is(.page-create, .page-dashboard) .preview-header { flex-wrap: wrap; gap: 10px; padding: 12px 16px; }
+  :is(.page-create, .page-dashboard) .preview-close { min-width: 36px; min-height: 36px; }
+  :is(.page-create, .page-dashboard) .preview-scroll-hint { display: block; padding: 6px 16px; background: #e8e8e8; color: #47574e; font-size: 11px; }
+  :is(.page-create, .page-dashboard) .preview-body { min-height: 0; overflow: auto; }
+  .page-create .preview-a4-wrap { padding: 14px; max-height: calc(100dvh - 100px); }
+}
+
+@media (max-width: 600px) {
+  .page-create .items-table-wrap { overflow: visible; border: 0; }
+  .page-create .items-table, .page-create .items-table tbody { display: block; }
+  .page-create .items-table thead { display: none; }
+  .page-create .items-table tr {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 10px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #f8faf7;
+  }
+  .page-create .items-table td { min-width: 0; padding: 0; border: 0; }
+  .page-create .items-table td:first-child { grid-column: 1 / -1; }
+  .page-create .items-table td[data-label]::before { content: attr(data-label); display: block; margin-bottom: 5px; color: var(--text2); font-size: 11px; }
+  .page-create .items-table :is(.desc-input, .num-input) { width: 100%; min-height: 44px; padding: 9px 12px; border: 1px solid var(--border); background: #fff; text-align: left; }
+  .page-create .items-table .item-amt { align-self: center; }
+  .page-create .items-table .item-remove { align-self: end; justify-self: end; }
+  .page-create .remove-item { min-width: 44px; min-height: 44px; border: 1px solid var(--border); border-radius: 8px; }
+  .page-account .design-options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

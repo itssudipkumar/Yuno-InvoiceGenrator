@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import Nav from '../../components/layout/Nav'
 import { InvoicePreview } from '../../components/invoice/InvoiceTemplates'
+import { InvoiceDesignPicker } from '../../components/invoice/InvoiceDesignPicker'
 import { LineItemsTable } from '../../components/ui/LineItemsTable'
 import { TotalsSidebar } from '../../components/ui/TotalsSidebar'
 import { AutocompleteInput, useAddressAutocomplete } from '../../components/ui/AutocompleteInput'
 import { printInvoice } from '../../utils/print'
-import { INVOICE_DESIGNS } from '../../types/invoice.types'
+import { downloadInvoicePdf } from '../../utils/pdf'
 import { formatCurrency } from '../../utils/invoice'
-import type { Invoice, InvoiceItem, BusinessInfo, ClientInfo } from '../../types/invoice.types'
+import type { Invoice, InvoiceItem, BusinessInfo, ClientInfo, InvoiceDesign } from '../../types/invoice.types'
 import type { Page } from '../../App'
 
 interface Props { nav:(p:Page)=>void }
@@ -19,7 +20,7 @@ const DEFAULT_BIZ:BusinessInfo={name:'',abn:'',email:'',phone:'',address:'',logo
 const DEFAULT_CLIENT:ClientInfo={name:'',email:'',phone:'',address:'',company:''}
 
 export default function GuestInvoice({nav}:Props){
-  const [design,setDesign]=useState('slate')
+  const [design,setDesign]=useState<InvoiceDesign>('slate')
   const [biz,setBiz]=useState<BusinessInfo>(DEFAULT_BIZ)
   const [client,setClient]=useState<ClientInfo>(DEFAULT_CLIENT)
   const [items,setItems]=useState<InvoiceItem[]>([{id:'1',description:'',quantity:1,unitPrice:0,amount:0}])
@@ -76,22 +77,11 @@ export default function GuestInvoice({nav}:Props){
       </div>
       <div className="create-container">
         <div className="create-header">
-          <h1>Create Invoice</h1>
+          <div><p className="workspace-eyebrow">YOUR WORKSPACE / INVOICES</p><h1>Create Invoice</h1><p className="workspace-subtitle">Make an invoice that feels like your business.</p></div>
           {msg&&<div className="save-msg">{msg}</div>}
         </div>
 
-        {/* Design Selector */}
-        <div className="form-card" style={{marginBottom:20}}>
-          <h3>🎨 Invoice Design</h3>
-          <div className="design-options">
-            {INVOICE_DESIGNS.map(d=>(
-              <button key={d.id} className={`design-opt${design===d.id?' active':''}`} onClick={()=>setDesign(d.id)}>
-                <span className="design-name">{d.label}</span>
-                <span className="design-desc">{d.desc}</span>
-              </button>
-            ))}
-          </div>
-        </div>
+        <InvoiceDesignPicker design={design} onChange={setDesign} onPreview={()=>setShowPreview(true)}/>
 
         <div className="create-layout">
           <div className="create-form">
@@ -100,7 +90,7 @@ export default function GuestInvoice({nav}:Props){
             <div className="form-card">
               <h3>🏢 Your Business Information</h3>
               <p style={{fontSize:12,color:'var(--text3)',marginTop:-6}}>
-                <button onClick={()=>nav('login')} style={{background:'none',border:'none',color:'var(--gold)',cursor:'pointer',fontSize:12,fontFamily:"'DM Sans',sans-serif"}}>Sign up free</button>{' '}to save this permanently — never fill it in again.
+                <button onClick={()=>nav('login')} style={{background:'none',border:'none',color:'var(--gold)',cursor:'pointer',fontSize:12,fontFamily:"'Plus Jakarta Sans',sans-serif"}}>Sign up free</button>{' '}to save this permanently — never fill it in again.
               </p>
               <div className="logo-upload">
                 {biz.logo?<img src={biz.logo} alt="logo" className="logo-preview"/>:<div style={{width:80,height:52,flexShrink:0}}/>}
@@ -189,6 +179,7 @@ export default function GuestInvoice({nav}:Props){
             <div className="action-card">
               <h3>Actions</h3>
               <button className="action-btn preview" onClick={()=>setShowPreview(true)}>👁 Preview</button>
+              <button className="action-btn" onClick={()=>downloadInvoicePdf(currentInvoice)}>⬇ Download PDF</button>
               <button className="action-btn print" onClick={()=>printInvoice('guest-print-area')}>🖨 Print</button>
               <button className="action-btn email" onClick={handleEmail}>📧 Email to Client</button>
             </div>
@@ -211,9 +202,11 @@ export default function GuestInvoice({nav}:Props){
               <h2>Preview — {design.charAt(0).toUpperCase()+design.slice(1)}</h2>
               <div style={{display:'flex',gap:8}}>
                 <button className="btn-gold sm" onClick={()=>printInvoice('guest-print-area')}>🖨 Print</button>
-                <button className="preview-close" onClick={()=>setShowPreview(false)}>✕</button>
+                <button className="btn-gold sm" onClick={()=>downloadInvoicePdf(currentInvoice)}>⬇ PDF</button>
+                <button className="preview-close" aria-label="Close preview" onClick={()=>setShowPreview(false)}>✕</button>
               </div>
             </div>
+            <p className="preview-scroll-hint">Swipe sideways to see the full invoice.</p>
             <div className="preview-body">
               <div className="preview-a4"><InvoicePreview invoice={currentInvoice}/></div>
             </div>

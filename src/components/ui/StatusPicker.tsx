@@ -16,9 +16,14 @@ export function StatusPicker({ invoice, onDone, onStay, title }: Props) {
   )
   const [note, setNote] = useState('')
 
-  const save = () => {
-    saveInvoice({ ...invoice, status, statusNote: note, updatedAt: new Date().toISOString() })
-    onDone()
+  const save = async () => {
+    try {
+      await saveInvoice({ ...invoice, status, statusNote: note, updatedAt: new Date().toISOString() })
+      onDone()
+    } catch (error) {
+      console.error('Could not update invoice', error)
+      alert('Could not save the invoice. Please try again.')
+    }
   }
 
   return (

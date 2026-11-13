@@ -20,7 +20,7 @@ YUNO keeps invoicing simple, clean, and private. It helps you create professiona
 
 | Clean workflow | Professional output | Private by design |
 |---|---|---|
-| Fast invoice creation | Stylish templates | No backend, no account lock-in |
+| Fast invoice creation | Stylish templates | Cloud access with your account |
 
 **Powered by [TechnoForty](https://technoforty.com)**
 
@@ -67,12 +67,20 @@ Works on desktop and mobile. No registration needed.
 
 ## Highlights
 
-- 8 invoice designs with a polished, professional look
+- 5 invoice designs with a polished, professional look
 - GST-aware calculations and Australian business fields
 - Guest and registered user flows
 - Saved clients and invoice history
-- Print-ready output for fast sharing
-- Local-first storage for privacy and control
+- One-click PDF downloads and print-ready output
+- Monthly revenue and received-payment analytics
+- Recurring invoice schedules that create drafts for review
+- Email-verified accounts and cloud storage for access across devices
+- Optional import of existing local account data, without deleting the original
+
+PDF downloads use the selected invoice design, including its colours and layout.
+Previously saved Prism, Linen, and Blueprint invoices are displayed using the
+closest available design (Frost, Terra, and Slate respectively). The downloaded
+PDF is image-based rather than selectable text.
 
 ---
 
@@ -86,6 +94,41 @@ pnpm dev
 ```
 
 Open the app at [http://localhost:5173](http://localhost:5173).
+
+### Supabase setup
+
+Create a Supabase project and run `supabase/setup.sql` followed by
+`supabase/recurring.sql` and `supabase/invoice-number-constraint.sql` in its SQL editor. These scripts create the tables,
+per-user row-level security policies, and the function used to generate
+recurring drafts atomically. Run `setup.sql` only once on an empty YUNO schema.
+The invoice-number index fails rather than modifying data if an account already
+has duplicate invoice numbers. Resolve duplicates before applying it.
+
+Enable email/password authentication and **Confirm email** in Supabase Auth.
+Set the Auth Site URL and allow the app URL (for local development,
+`http://localhost:5173`) in the redirect URL allowlist. Add the deployed HTTPS
+URL to the allowlist when deploying. The hosted Supabase default email sender
+has delivery restrictions; configure a production SMTP provider before launch.
+
+Create `.env.local` (ignored by Git) in the project root:
+
+```env
+VITE_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
+VITE_SUPABASE_ANON_KEY=YOUR_PUBLISHABLE_OR_ANON_KEY
+```
+
+Use only a publishable or legacy anon key in the browser, never a secret or
+service-role key. Restart Vite after changing environment variables. Guest
+invoices are not saved. Signed-in data is stored in Supabase; loading and saving
+requires a network connection.
+
+Existing local accounts are not cloud accounts. Create and verify a cloud account
+using the same email, then use **Import local data** in Account on the device
+holding the old data. Imports do not delete browser data, and existing imported
+records are not overwritten on retry. Business details are replaced only if the
+separate checkbox is selected. The old browser-based passwords remain in local
+storage until the user clears that browser's data; do not clear it before
+confirming any import.
 
 ### Build
 

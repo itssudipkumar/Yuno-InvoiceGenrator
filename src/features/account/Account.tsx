@@ -2,23 +2,15 @@ import { useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import Nav from '../../components/layout/Nav'
 import type { Page } from '../../App'
-
-const DESIGNS = [
-  {id:'prestige',label:'Prestige',desc:'Luxury dark, Cormorant serif'},
-  {id:'frost',label:'Frost',desc:'Corporate navy gradient'},
-  {id:'terra',label:'Terra',desc:'Warm terracotta & cream'},
-  {id:'prism',label:'Prism',desc:'Light with indigo geometric'},
-  {id:'linen',label:'Linen',desc:'Editorial cream & italic'},
-  {id:'blueprint',label:'Blueprint',desc:'Monospace technical'},
-  {id:'flora',label:'Flora',desc:'Sage green organic'},
-  {id:'slate',label:'Slate',desc:'Ultra minimal Bauhaus'},
-]
+import { INVOICE_DESIGNS, resolveInvoiceDesign } from '../../types/invoice.types'
+import LegacyImport from '../../components/account/LegacyImport'
 
 export default function Account({ nav }: { nav:(p:Page)=>void }) {
-  const { user, updateUser, logout } = useAuth()
+  const { user, updateUser, updateEmail, updatePassword, logout } = useAuth()
   const [tab, setTab] = useState<'business'|'profile'|'security'>('business')
   const [msg, setMsg] = useState('')
   const [err, setErr] = useState('')
+  const [busy, setBusy] = useState(false)
 
   const [biz, setBiz] = useState({
     name: user?.businessInfo.name||'',
@@ -33,39 +25,56 @@ export default function Account({ nav }: { nav:(p:Page)=>void }) {
     logo: user?.businessInfo.logo||'',
     accountName: user?.businessInfo.accountName||'',
   })
-  const [design, setDesign] = useState(user?.invoiceDesign||'slate')
+  const [design, setDesign] = useState(resolveInvoiceDesign(user?.invoiceDesign||'slate'))
   const [profile, setProfile] = useState({email:user?.email||''})
   const [security, setSecurity] = useState({current:'',newP:'',confirm:''})
 
   const show = (ok:boolean,m:string) => {
     ok?setMsg(m):setErr(m)
     ok?setErr(''):setMsg('')
-    setTimeout(()=>{setMsg('');setErr('')},3500)
   }
 
-  const saveBiz = (e:React.FormEvent) => {
+  const saveBiz = async (e:React.FormEvent) => {
     e.preventDefault()
     if(!user) return
-    updateUser({...user,businessInfo:{...user.businessInfo,...biz},invoiceDesign:design})
-    show(true,'✅ Business info saved!')
+    setBusy(true)
+    try {
+      await updateUser({...user,businessInfo:{...user.businessInfo,...biz},invoiceDesign:design})
+      show(true,'Business info saved!')
+    } catch (error) { show(false,error instanceof Error ? error.message : 'Could not save business info.') }
+    finally { setBusy(false) }
   }
 
-  const saveProfile = (e:React.FormEvent) => {
+  const saveProfile = async (e:React.FormEvent) => {
     e.preventDefault()
     if(!user) return
-    updateUser({...user,email:profile.email})
-    show(true,'✅ Profile updated!')
+    if (profile.email.trim() === user.email) { show(false,'Enter a different email address.'); return }
+    setBusy(true)
+    try {
+      await updateEmail(profile.email)
+      show(true,'Email change requested. Check your email for confirmation; your current address remains active until confirmed.')
+    } catch (error) { show(false,error instanceof Error ? error.message : 'Could not change email.') }
+    finally { setBusy(false) }
   }
 
-  const savePassword = (e:React.FormEvent) => {
+  const savePassword = async (e:React.FormEvent) => {
     e.preventDefault()
     if(!user) return
-    if(user.password!==btoa(security.current)){show(false,'Current password incorrect');return}
     if(security.newP!==security.confirm){show(false,'Passwords do not match');return}
     if(security.newP.length<6){show(false,'Min 6 characters');return}
-    updateUser({...user,password:btoa(security.newP)})
-    setSecurity({current:'',newP:'',confirm:''})
-    show(true,'✅ Password updated!')
+    setBusy(true)
+    try {
+      await updatePassword(security.current,security.newP)
+      setSecurity({current:'',newP:'',confirm:''})
+      show(true,'Password updated!')
+    } catch (error) { show(false,error instanceof Error ? error.message : 'Could not update password.') }
+    finally { setBusy(false) }
+  }
+  const handleLogout = async () => {
+    setBusy(true)
+    try { await logout() }
+    catch (error) { show(false,error instanceof Error ? error.message : 'Could not sign out.') }
+    finally { setBusy(false) }
   }
 
   const logoUpload = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -91,7 +100,7 @@ export default function Account({ nav }: { nav:(p:Page)=>void }) {
             <p>{user?.email}</p>
             <p className="muted-text">Member since {user?new Date(user.createdAt).toLocaleDateString('en-AU',{year:'numeric',month:'long'}):''}</p>
           </div>
-          <button className="btn-logout" onClick={logout}>Logout</button>
+          <button className="btn-logout" disabled={busy} onClick={handleLogout}>Logout</button>
         </div>
 
         <div className="account-tabs">
@@ -104,6 +113,7 @@ export default function Account({ nav }: { nav:(p:Page)=>void }) {
 
         {msg && <div className="save-msg" style={{marginBottom:12}}>{msg}</div>}
         {err && <div className="error-msg" style={{marginBottom:12}}>{err}</div>}
+        {user && <LegacyImport user={user}/>}
 
         {tab==='business' && (
           <form onSubmit={saveBiz} className="account-form">
@@ -146,7 +156,7 @@ export default function Account({ nav }: { nav:(p:Page)=>void }) {
                 <div className="fg"><label>BSB</label><input value={biz.bsb} onChange={e=>setBiz(b=>({...b,bsb:e.target.value}))} placeholder="062-000"/></div>
                 <div className="fg"><label>Account Number</label><input value={biz.accountNumber} onChange={e=>setBiz(b=>({...b,accountNumber:e.target.value}))}/></div>
               </div>
-              <div className="fg"><label>Account Name</label><input value={(biz as any).accountName||''} onChange={e=>setBiz(b=>({...b,accountName:e.target.value}))} placeholder="e.g. John Smith Trading"/></div>
+              <div className="fg"><label>Account Name</label><input value={biz.accountName||''} onChange={e=>setBiz(b=>({...b,accountName:e.target.value}))} placeholder="e.g. John Smith Trading"/></div>
               <div style={{display:'none'}}>
               </div>
             </div>
@@ -155,8 +165,8 @@ export default function Account({ nav }: { nav:(p:Page)=>void }) {
             <div className="form-card">
               <h3>Default Invoice Design</h3>
               <div className="design-options">
-                {DESIGNS.map(d=>(
-                  <button key={d.id} type="button" className={`design-opt${design===d.id?' active':''}`} onClick={()=>setDesign(d.id)}>
+                {INVOICE_DESIGNS.map(d=>(
+                  <button key={d.id} type="button" className={`design-opt${design===d.id?' active':''}`} aria-pressed={design===d.id} onClick={()=>setDesign(d.id)}>
                     <span className="design-name">{d.label}</span>
                     <span className="design-desc">{d.desc}</span>
                   </button>
@@ -164,7 +174,7 @@ export default function Account({ nav }: { nav:(p:Page)=>void }) {
               </div>
             </div>
 
-            <button type="submit" className="btn-gold">Save Business Info</button>
+            <button type="submit" disabled={busy} className="btn-gold">{busy ? 'Saving…' : 'Save Business Info'}</button>
           </form>
         )}
 
@@ -174,7 +184,7 @@ export default function Account({ nav }: { nav:(p:Page)=>void }) {
               <h3>Account Details</h3>
               <div className="fg"><label>Email Address</label><input type="email" value={profile.email} onChange={e=>setProfile(p=>({...p,email:e.target.value}))} required/></div>
             </div>
-            <button type="submit" className="btn-gold">Save Profile</button>
+            <button type="submit" disabled={busy} className="btn-gold">{busy ? 'Saving…' : 'Save Profile'}</button>
           </form>
         )}
 
@@ -188,7 +198,7 @@ export default function Account({ nav }: { nav:(p:Page)=>void }) {
                 <div className="fg"><label>Confirm New Password</label><input type="password" value={security.confirm} onChange={e=>setSecurity(s=>({...s,confirm:e.target.value}))} required/></div>
               </div>
             </div>
-            <button type="submit" className="btn-gold">Update Password</button>
+            <button type="submit" disabled={busy} className="btn-gold">{busy ? 'Saving…' : 'Update Password'}</button>
           </form>
         )}
       </div>
