@@ -33,7 +33,7 @@ export function InvoicePreview({ invoice }: Props) {
         <div className="invoice-document__heading">
           <div className="invoice-document__eyebrow">Tax invoice</div>
           <h1>Invoice</h1>
-          <div className="invoice-document__number">{invoice.invoiceNumber || '—'}</div>
+          <div className="invoice-document__number">{invoice.invoiceNumber || '-'}</div>
         </div>
       </header>
 
@@ -48,7 +48,7 @@ export function InvoicePreview({ invoice }: Props) {
             {client.address && <div>{client.address}</div>}
           </section>
           <section className="invoice-document__dates" aria-label="Invoice dates">
-            <div><span className="invoice-document__label">Date issued</span><strong>{invoice.invoiceDate ? formatDate(invoice.invoiceDate) : '—'}</strong></div>
+            <div><span className="invoice-document__label">Date issued</span><strong>{invoice.invoiceDate ? formatDate(invoice.invoiceDate) : '-'}</strong></div>
             {invoice.dueDate && <div><span className="invoice-document__label">Due date</span><strong>{formatDate(invoice.dueDate)}</strong></div>}
           </section>
         </div>
@@ -62,7 +62,7 @@ export function InvoicePreview({ invoice }: Props) {
           <tbody>
             {invoice.items.map(item => (
               <tr key={item.id} data-pdf-avoid>
-                <td>{item.description || '—'}</td>
+                <td>{item.description || '-'}</td>
                 <td>{item.quantity}</td>
                 <td>{formatCurrency(item.unitPrice)}</td>
                 <td>{formatCurrency(item.amount)}</td>
@@ -99,7 +99,7 @@ export function InvoicePreview({ invoice }: Props) {
       </main>
       <footer className="invoice-document__footer" data-pdf-avoid>
         <span>{business.name || 'Invoice'}</span>
-        <span>{invoice.invoiceNumber || '—'}</span>
+        <span>{invoice.invoiceNumber || '-'}</span>
       </footer>
     </article>
   )

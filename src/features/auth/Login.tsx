@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import Nav from '../../components/layout/Nav'
+import yunoLogo from '../../../yuno_light.svg'
 import type { Page } from '../../App'
 
 type Tab = 'login' | 'register' | 'forgot' | 'recovery'
@@ -40,14 +41,13 @@ export default function Login({ nav }: { nav: (p: Page) => void }) {
       <Nav nav={nav} current="login" />
       <div className="auth-container"><div className="auth-card">
         <div className="auth-logo">
-          <svg viewBox="0 0 40 40" fill="none" width="48" height="48"><circle cx="20" cy="20" r="20" fill="#C9A84C"/><text x="20" y="26" textAnchor="middle" fontSize="18" fontWeight="800" fill="#0A0F1E">Y</text></svg>
-          <div><div className="auth-brand">YUNO</div><div className="auth-sub">by TechnoForty</div></div>
+          <img src={yunoLogo} alt="YUNO" className="auth-logo-img" />
+          <div className="auth-sub">by TechnoForty</div>
         </div>
         <div className="auth-intro">
           <p className="workspace-eyebrow">WELCOME TO YUNO</p>
           <h1>{activeTab === 'login' ? 'Good to see you again.' : activeTab === 'register' ? 'Make room for your work.' : activeTab === 'forgot' ? 'Forgot your password?' : 'Set a new password.'}</h1>
           <p>{activeTab === 'login' ? 'Sign in to pick up where you left off.' : activeTab === 'register' ? 'Create a free account and verify your email to get started.' : activeTab === 'forgot' ? 'Enter your email and we will send a reset link.' : 'Choose a new password for your account.'}</p>
-          {(activeTab === 'register' || activeTab === 'forgot') && <p className="auth-hint">Email links require Supabase email confirmation and {window.location.origin} in the Auth redirect URL allowlist.</p>}
         </div>
         {!recovering && <div className="auth-tabs">
           <button type="button" className={activeTab === 'login' ? 'auth-tab active' : 'auth-tab'} onClick={() => changeTab('login')}>Sign In</button>

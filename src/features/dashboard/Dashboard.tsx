@@ -173,7 +173,7 @@ export default function Dashboard({ nav, onEditDraft }: Props) {
                   </div>
                   <div className="recurring-row-next">
                     <span>{schedule.active?'Next draft':'Paused'}</span>
-                    <strong>{schedule.active?formatDate(schedule.nextInvoiceDate):'—'}</strong>
+                    <strong>{schedule.active?formatDate(schedule.nextInvoiceDate):'Paused'}</strong>
                   </div>
                   <div className="recurring-row-actions">
                     <button className="act-btn" onClick={()=>handleRecurringToggle(schedule)}>
@@ -215,7 +215,7 @@ export default function Dashboard({ nav, onEditDraft }: Props) {
                           <td className="inv-num">{inv.invoiceNumber}</td>
                           <td><div className="client-name">{inv.client.name}</div>{inv.client.company&&<div className="client-co">{inv.client.company}</div>}</td>
                           <td>{formatDate(inv.invoiceDate)}</td>
-                          <td>{inv.dueDate?formatDate(inv.dueDate):<span style={{color:'var(--text3)'}}>—</span>}</td>
+                          <td>{inv.dueDate?formatDate(inv.dueDate):<span style={{color:'var(--text3)'}}>Not set</span>}</td>
                           <td className="amount">{formatCurrency(inv.total)}</td>
                           <td>
                             <select
@@ -295,7 +295,7 @@ export default function Dashboard({ nav, onEditDraft }: Props) {
         <div className="preview-overlay" onClick={()=>setPreviewInv(null)}>
           <div className="preview-modal" onClick={e=>e.stopPropagation()}>
             <div className="preview-header">
-              <h2>{previewInv.invoiceNumber} — {previewInv.client.name}</h2>
+              <h2>{previewInv.invoiceNumber}: {previewInv.client.name}</h2>
               <div style={{display:'flex',gap:8}}>
                 <button className="btn-gold sm" onClick={()=>handlePrintFromDashboard(previewInv)}>🖨 Print</button>
                 <button className="btn-gold sm" onClick={()=>downloadInvoicePdf(previewInv)}>⬇ PDF</button>

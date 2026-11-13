@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { useAuth } from '../../context/AuthContext'
 import type { Page } from '../../App'
-import yunoLogo from '../../assets/yuno-logo.png'
+import yunoLight from '../../../yuno_light.svg'
+import yunoDark from '../../../yuno_dark.svg'
 
 export default function Nav({ nav, current }: { nav: (p: Page) => void; current?: Page }) {
   const { user, logout } = useAuth()
@@ -19,8 +20,8 @@ export default function Nav({ nav, current }: { nav: (p: Page) => void; current?
   return (
     <nav className="yuno-nav" aria-label="Main navigation" onKeyDown={e => { if (e.key === 'Escape') setMenuOpen(false) }}>
       <button type="button" className="nav-brand" onClick={() => navigate(user ? 'dashboard' : 'landing')} aria-label={user ? 'YUNO dashboard' : 'YUNO home'}>
-        <img src={yunoLogo} alt="YUNO" className="nav-logo-img" />
-        <span className="nav-brand-name">YUNO</span>
+        <img src={yunoLight} alt="" className="nav-logo-img nav-logo-on-light" />
+        <img src={yunoDark} alt="" className="nav-logo-img nav-logo-on-dark" />
       </button>
       <button type="button" className="nav-menu-toggle" aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} aria-controls="main-nav-links" onClick={() => setMenuOpen(open => !open)}>
         {menuOpen ? <X size={21} /> : <Menu size={21} />}

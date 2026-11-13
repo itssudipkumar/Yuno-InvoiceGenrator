@@ -72,7 +72,7 @@ export default function GuestInvoice({nav}:Props){
     <div className="page-create">
       <Nav nav={nav} current="create-invoice"/>
       <div className="guest-banner">
-        <span>👋 Guest mode — invoices won't be saved.</span>
+        <span>👋 Guest mode: invoices won't be saved.</span>
         <button onClick={()=>nav('login')}>Create free account to save →</button>
       </div>
       <div className="create-container">
@@ -90,7 +90,7 @@ export default function GuestInvoice({nav}:Props){
             <div className="form-card">
               <h3>🏢 Your Business Information</h3>
               <p style={{fontSize:12,color:'var(--text3)',marginTop:-6}}>
-                <button onClick={()=>nav('login')} style={{background:'none',border:'none',color:'var(--gold)',cursor:'pointer',fontSize:12,fontFamily:"'Plus Jakarta Sans',sans-serif"}}>Sign up free</button>{' '}to save this permanently — never fill it in again.
+                <button onClick={()=>nav('login')} style={{background:'none',border:'none',color:'var(--gold)',cursor:'pointer',fontSize:12,fontFamily:"'Plus Jakarta Sans',sans-serif"}}>Sign up free</button>{' '}to save this permanently, so you never need to fill it in again.
               </p>
               <div className="logo-upload">
                 {biz.logo?<img src={biz.logo} alt="logo" className="logo-preview"/>:<div style={{width:80,height:52,flexShrink:0}}/>}
@@ -184,8 +184,8 @@ export default function GuestInvoice({nav}:Props){
               <button className="action-btn email" onClick={handleEmail}>📧 Email to Client</button>
             </div>
             <div className="signup-nudge">
-              <p>💡 <strong style={{color:'var(--gold)'}}>Save time every invoice.</strong><br/>Sign up free — save your business info, clients, bank details and access your full dashboard.</p>
-              <button className="btn-gold full" onClick={()=>nav('login')}>Sign Up Free — 30 Seconds</button>
+              <p>💡 <strong style={{color:'var(--gold)'}}>Save time every invoice.</strong><br/>Sign up free to save your business info, clients and bank details, and access your full dashboard.</p>
+              <button className="btn-gold full" onClick={()=>nav('login')}>Sign Up Free</button>
             </div>
           </div>
         </div>
@@ -199,7 +199,7 @@ export default function GuestInvoice({nav}:Props){
         <div className="preview-overlay" onClick={()=>setShowPreview(false)}>
           <div className="preview-modal" onClick={e=>e.stopPropagation()}>
             <div className="preview-header">
-              <h2>Preview — {design.charAt(0).toUpperCase()+design.slice(1)}</h2>
+              <h2>Preview: {design.charAt(0).toUpperCase()+design.slice(1)}</h2>
               <div style={{display:'flex',gap:8}}>
                 <button className="btn-gold sm" onClick={()=>printInvoice('guest-print-area')}>🖨 Print</button>
                 <button className="btn-gold sm" onClick={()=>downloadInvoicePdf(currentInvoice)}>⬇ PDF</button>

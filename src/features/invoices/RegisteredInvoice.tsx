@@ -210,7 +210,7 @@ export default function RegisteredInvoice({ nav, editInvoice }: Props) {
               </div>
               <div className="biz-info-note">
                 <span>📁</span>
-                <span>Business info auto-filled from your <button onClick={()=>nav('account')}>Account</button>{user?.businessInfo.name?` — ${user.businessInfo.name}`:' (not yet set)'}</span>
+                <span>Business info auto-filled from your <button onClick={()=>nav('account')}>Account</button>{user?.businessInfo.name?` (${user.businessInfo.name})`:' (not yet set)'}</span>
               </div>
             </div>
 
@@ -286,7 +286,7 @@ export default function RegisteredInvoice({ nav, editInvoice }: Props) {
         <div className="preview-overlay" onClick={()=>setShowPreview(false)}>
           <div className="preview-modal" onClick={e=>e.stopPropagation()}>
             <div className="preview-header">
-              <h2>Preview — {design.charAt(0).toUpperCase()+design.slice(1)}</h2>
+              <h2>Preview: {design.charAt(0).toUpperCase()+design.slice(1)}</h2>
               <div style={{display:'flex',gap:8}}>
                 <button className="btn-gold sm" onClick={()=>printInvoice('reg-print-area')}>🖨 Print</button>
                 <button className="btn-gold sm" onClick={()=>downloadInvoicePdf(currentInvoice)}>⬇ PDF</button>

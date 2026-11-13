@@ -22,7 +22,7 @@ export function InvoiceDesignPicker({ design, onChange, onPreview, isRegistered 
       <div className="invoice-design-picker__header">
         <div className="invoice-design-picker__summary">
           <h2 id="invoice-design-heading">Invoice design</h2>
-          <p><strong>{selected?.label}</strong> <span>— {selected?.desc}</span></p>
+          <p><strong>{selected?.label}</strong> <span>({selected?.desc})</span></p>
         </div>
         <div className="invoice-design-picker__actions">
           <button type="button" ref={toggleRef} className="invoice-design-picker__toggle" aria-expanded={isOpen} aria-controls={optionsId} onClick={() => setIsOpen(open => !open)}>

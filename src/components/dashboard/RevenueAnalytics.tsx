@@ -88,7 +88,7 @@ export default function RevenueAnalytics({ invoices }: Props) {
         <div>
           <span>Month to date</span>
           <strong className={growth !== null && growth < 0 ? 'growth-down' : 'growth-up'}>
-            {growth === null ? '—' : `${growth >= 0 ? '+' : ''}${growth.toFixed(0)}%`}
+            {growth === null ? 'N/A' : `${growth >= 0 ? '+' : ''}${growth.toFixed(0)}%`}
           </strong>
           <small>{growth === null ? 'No previous-month comparison' : 'vs same days last month'}</small>
         </div>

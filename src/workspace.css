@@ -28,6 +28,9 @@
   background: transparent;
   font: inherit;
 }
+:is(.page-landing, .page-dashboard, .page-auth, .page-create, .page-clients, .page-account) .yuno-nav {
+  padding-inline: max(3.5rem, calc((100% - 1280px) / 2 + 3.5rem));
+}
 .nav-menu-toggle { display: none; }
 .preview-scroll-hint { display: none; }
 
@@ -75,9 +78,9 @@
 .page-account .account-tab.active, .page-auth .auth-tab.active { background: #fff; color: #315d50; box-shadow: 0 2px 6px rgba(37, 61, 43, .08); }
 .page-auth .auth-container { min-height: calc(100vh - 72px); }
 .page-auth .auth-card { max-width: 480px; border-radius: 20px; }
-.page-auth .auth-logo { justify-content: flex-start; }
-.page-auth .auth-logo circle { fill: #315d50; }
-.page-auth .auth-logo text { fill: #fff; }
+.page-auth .auth-logo { flex-direction: column; justify-content: center; gap: 4px; }
+.page-auth .auth-logo-img { width: auto; height: 88px; max-width: 100%; object-fit: contain; }
+.page-auth .auth-sub { color: #718079; letter-spacing: .04em; }
 .auth-intro { margin: 0 0 24px; }
 .auth-intro h1 { margin-bottom: 8px; font-size: 1.8rem; letter-spacing: -.025em; }
 .auth-intro > p:last-child { color: #718079; font-size: 13px; }
@@ -90,11 +93,18 @@
   .page-create .create-layout { grid-template-columns: minmax(0, 1fr); }
 }
 
+@media (max-width: 900px) {
+  :is(.page-landing, .page-dashboard, .page-auth, .page-create, .page-clients, .page-account) .yuno-nav {
+    padding-inline: 2rem;
+  }
+}
+
 @media (max-width: 700px) {
   :is(.page-landing, .page-dashboard, .page-auth, .page-create, .page-clients, .page-account) .yuno-nav {
     height: 64px;
-    padding: 0 16px;
+    padding-block: 0;
   }
+  .yuno-nav .nav-logo-img { height: 50px; }
   .yuno-nav .nav-menu-toggle {
     display: grid;
     place-items: center;
@@ -149,6 +159,9 @@
 }
 
 @media (max-width: 600px) {
+  :is(.page-landing, .page-dashboard, .page-auth, .page-create, .page-clients, .page-account) .yuno-nav {
+    padding-inline: 20px;
+  }
   .page-create .items-table-wrap { overflow: visible; border: 0; }
   .page-create .items-table, .page-create .items-table tbody { display: block; }
   .page-create .items-table thead { display: none; }

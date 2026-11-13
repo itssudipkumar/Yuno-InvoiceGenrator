@@ -14,7 +14,7 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:700;line-height:1.2}
 
 /* NAV */
 .yuno-nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;background:var(--navy2);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
-.nav-brand{display:flex;align-items:center;gap:10px;cursor:pointer}
+.nav-brand{display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer}
 .nav-brand-name{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:800;color:var(--gold);letter-spacing:2px}
 .nav-links{display:flex;align-items:center;gap:4px}
 .nav-link{background:none;border:none;color:var(--text2);padding:8px 14px;border-radius:8px;cursor:pointer;font-size:14px;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s}
@@ -339,7 +339,10 @@ label{font-size:12px;color:var(--text2);margin-bottom:4px;display:block;letter-s
 }
 
 /* ── NAV LOGO ── */
-.nav-logo-img{width:36px;height:36px;object-fit:contain;border-radius:50%}
+.nav-logo-img{display:block;width:auto;height:54px;max-width:100%;object-fit:contain;flex-shrink:0}
+.nav-logo-on-dark{display:none}
+.page-landing .nav-logo-on-light{display:none}
+.page-landing .nav-logo-on-dark{display:block}
 
 /* ── A4 PREVIEW MODAL ── */
 .preview-modal.a4-preview{max-width:820px;width:95vw}
@@ -410,9 +413,6 @@ label{font-size:12px;color:var(--text2);margin-bottom:4px;display:block;letter-s
 .status-planned{background:rgba(255,255,255,.05);color:var(--text3);border:1px solid var(--border)}
 
 @media(max-width:600px){.upcoming-section{padding:3rem 1.5rem}}
-
-/* ── Nav logo image ── */
-.nav-logo-img{width:34px;height:34px;border-radius:50%;object-fit:cover;flex-shrink:0}
 
 /* ── A4 preview modal ── */
 .preview-body{padding:20px;background:#e8e8e8;overflow-y:auto;max-height:80vh}

@@ -30,11 +30,11 @@ export function StatusPicker({ invoice, onDone, onStay, title }: Props) {
     <div className="modal-overlay">
       <div className="modal-card" style={{ maxWidth: 480 }}>
         <div className="modal-header">
-          <h2>{title || `✅ Invoice Saved — ${invoice.invoiceNumber}`}</h2>
+          <h2>{title || `✅ Invoice Saved: ${invoice.invoiceNumber}`}</h2>
         </div>
         <div style={{ padding: '20px 22px', display: 'flex', flexDirection: 'column', gap: 14 }}>
           <p style={{ fontSize: 13, color: 'var(--text2)' }}>
-            Set the status — you can update this anytime from the dashboard.
+            Set the status. You can update this anytime from the dashboard.
           </p>
           <div className="status-picker">
             {STATUS_OPTIONS.map(s => (
