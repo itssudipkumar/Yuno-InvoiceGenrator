@@ -45,7 +45,7 @@ export default function RegisteredInvoice({ nav, editInvoice }: Props) {
     invoiceDate: editInvoice?.invoiceDate||today,
     dueDate: editInvoice?.dueDate||due30,
     hasDueDate: editInvoice ? !!editInvoice.dueDate : true,
-    notes: editInvoice?.notes||'Thank you for your business. Payment is due within 30 days.',
+    notes: editInvoice?.notes||'Thank you for your business. Payment is due within 07 days.',
     taxRate: editInvoice?.taxRate??10,
   })
 

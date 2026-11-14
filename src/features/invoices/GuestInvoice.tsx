@@ -27,7 +27,7 @@ export default function GuestInvoice({nav}:Props){
   const [form,setForm]=useState({
     invoiceNumber:'INV-0001', invoiceDate:today,
     dueDate:due30, hasDueDate:true,
-    notes:'Thank you for your business. Payment is due within 30 days.',
+    notes:'Thank you for your business. Payment is due within 07 days.',
     taxRate:10,
   })
   const [showPreview,setShowPreview]=useState(false)
