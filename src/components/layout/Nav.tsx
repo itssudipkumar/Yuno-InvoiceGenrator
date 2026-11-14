@@ -32,6 +32,7 @@ export default function Nav({ nav, current }: { nav: (p: Page) => void; current?
             <button className={`nav-link${current === 'dashboard' ? ' active' : ''}`} onClick={() => navigate('dashboard')}>Dashboard</button>
             <button className={`nav-link${current === 'create-invoice' ? ' active' : ''}`} onClick={() => navigate('create-invoice')}>New Invoice</button>
             <button className={`nav-link${current === 'clients' ? ' active' : ''}`} onClick={() => navigate('clients')}>Clients</button>
+            <button className={`nav-link${current === 'expenses' ? ' active' : ''}`} onClick={() => navigate('expenses')}>Expenses</button>
             <button className={`nav-link${current === 'account' ? ' active' : ''}`} onClick={() => navigate('account')}>Account</button>
             <button className="nav-btn-logout" disabled={loggingOut} onClick={handleLogout}>{loggingOut ? 'Signing out…' : 'Logout'}</button>
           </>

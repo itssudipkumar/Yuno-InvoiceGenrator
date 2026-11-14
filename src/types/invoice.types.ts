@@ -80,6 +80,20 @@ export interface Client {
   createdAt: string
 }
 
+export interface Expense {
+  id: string
+  userId: string
+  date: string
+  supplier: string
+  description: string
+  category: string
+  amountCents: number
+  gstCents: number
+  receiptPath: string | null
+  createdAt: string
+  updatedAt: string
+}
+
 // ─── Status Options ───────────────────────────────────────
 export const STATUS_OPTIONS: Array<{ v: InvoiceStatus; label: string; desc: string }> = [
   { v: 'sent',     label: '📤 Sent',      desc: 'Invoice sent, awaiting payment' },

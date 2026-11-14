@@ -74,6 +74,7 @@ Works on desktop and mobile. No registration needed.
 - One-click PDF downloads and print-ready output
 - Monthly revenue and received-payment analytics
 - Recurring invoice schedules that create drafts for review
+- Expense tracking with optional private receipt uploads
 - Email-verified accounts and cloud storage for access across devices
 - Optional import of existing local account data, without deleting the original
 
@@ -103,6 +104,13 @@ per-user row-level security policies, and the function used to generate
 recurring drafts atomically. Run `setup.sql` only once on an empty YUNO schema.
 The invoice-number index fails rather than modifying data if an account already
 has duplicate invoice numbers. Resolve duplicates before applying it.
+
+For expense tracking, run `supabase/expenses.sql` once in the same project.
+It creates an owner-only expenses table and a private receipt bucket with
+per-user storage policies. Expenses are entered in AUD before GST, with a
+separate GST amount. Receipts are optional PDF, JPEG, PNG or WebP files up to
+5 MB; opening one generates a short-lived private link. Receipt storage is
+subject to the Supabase project's storage limits.
 
 Enable email/password authentication and **Confirm email** in Supabase Auth.
 Set the Auth Site URL and allow the app URL (for local development,

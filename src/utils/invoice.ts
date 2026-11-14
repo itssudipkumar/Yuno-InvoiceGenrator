@@ -1,12 +1,12 @@
 // Re-export types from the types file for backward compat
 export type { Invoice, InvoiceItem, Client, InvoiceStatus, BusinessInfo, ClientInfo } from '../types/invoice.types'
 
-import type { Invoice, Client } from '../types/invoice.types'
+import type { Invoice, Client, Expense } from '../types/invoice.types'
 import type { RecurringFrequency, RecurringInvoice } from '../types/invoice.types'
 import { addDays, addMonths, addYears, differenceInCalendarDays, format, parseISO } from 'date-fns'
 import { supabase } from './supabase'
 
-type CloudTable = 'yuno_invoices' | 'yuno_clients' | 'yuno_recurring_invoices'
+type CloudTable = 'yuno_invoices' | 'yuno_clients' | 'yuno_recurring_invoices' | 'yuno_expenses'
 
 async function list<T>(table: CloudTable, userId: string): Promise<T[]> {
   const result: T[] = []
@@ -40,6 +40,12 @@ export const deleteInvoice = (id: string, userId: string) => remove('yuno_invoic
 export const getClients = (userId: string) => list<Client>('yuno_clients', userId)
 export const saveClient = (client: Client) => save('yuno_clients', client)
 export const deleteClient = (id: string, userId: string) => remove('yuno_clients', id, userId)
+export async function getExpenses(userId: string): Promise<Expense[]> {
+  return (await list<Expense>('yuno_expenses', userId))
+    .sort((a, b) => b.date.localeCompare(a.date) || b.createdAt.localeCompare(a.createdAt))
+}
+export const saveExpense = (expense: Expense) => save('yuno_expenses', expense)
+export const deleteExpense = (id: string, userId: string) => remove('yuno_expenses', id, userId)
 export async function getRecurringInvoices(userId: string): Promise<RecurringInvoice[]> {
   return (await list<RecurringInvoice>('yuno_recurring_invoices', userId))
     .sort((a, b) => a.nextInvoiceDate.localeCompare(b.nextInvoiceDate))

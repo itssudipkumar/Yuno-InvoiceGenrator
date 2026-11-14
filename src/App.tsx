@@ -6,10 +6,11 @@ import GuestInvoice from './features/invoices/GuestInvoice'
 import RegisteredInvoice from './features/invoices/RegisteredInvoice'
 import Clients from './features/clients/Clients'
 import Account from './features/account/Account'
+import Expenses from './features/expenses/Expenses'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import type { Invoice } from './types/invoice.types'
 
-export type Page = 'landing'|'login'|'dashboard'|'create-invoice'|'clients'|'account'
+export type Page = 'landing'|'login'|'dashboard'|'create-invoice'|'clients'|'account'|'expenses'
 
 function AppContent() {
   const { user, loading, error, retry, recovering, logout } = useAuth()
@@ -22,7 +23,7 @@ function AppContent() {
   useEffect(()=>{
     if(recovering) return
     if(user&&(page==='landing'||page==='login')) setPage('dashboard')
-    if(!user&&['dashboard','clients','account'].includes(page)) setPage('landing')
+    if(!user&&['dashboard','clients','account','expenses'].includes(page)) setPage('landing')
   },[user, page, recovering])
 
   // FIX #9: handle edit draft from dashboard
@@ -49,6 +50,7 @@ function AppContent() {
     case 'dashboard':      return <Dashboard nav={nav} onEditDraft={handleEditDraft}/>
     case 'create-invoice': return <RegisteredInvoice nav={nav} editInvoice={editingDraft}/>
     case 'clients':        return <Clients nav={nav}/>
+    case 'expenses':       return <Expenses nav={nav}/>
     case 'account':        return <Account nav={nav}/>
     default:               return <Dashboard nav={nav} onEditDraft={handleEditDraft}/>
   }

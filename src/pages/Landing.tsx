@@ -9,8 +9,7 @@ import {
   Users,
 } from 'lucide-react'
 import Nav from '../components/layout/Nav'
-
-type Page = 'landing' | 'login' | 'dashboard' | 'create-invoice' | 'clients' | 'account'
+import type { Page } from '../App'
 
 export default function Landing({ nav }: { nav: (p: Page) => void }) {
   const pageRef = useRef<HTMLDivElement>(null)
@@ -152,7 +151,7 @@ export default function Landing({ nav }: { nav: (p: Page) => void }) {
             {[
               {label:'Online payments',desc:'Accept payments directly from an invoice.',status:'On the roadmap'},
               {label:'Cloud backup',desc:'Keep an optional backup of your business data.',status:'On the roadmap'},
-              {label:'Expense tracking',desc:'Keep business spending alongside your invoices.',status:'On the roadmap'},
+              {label:'Expense tracking',desc:'Keep business spending alongside your invoices.',status:'Available'},
               {label:'Mobile app',desc:'Manage invoices from your phone.',status:'On the roadmap'},
               {label:'Automatic reminders',desc:'Make invoice follow-ups easier to manage.',status:'On the roadmap'},
               {label:'Multi-currency',desc:'Create invoices for clients around the world.',status:'On the roadmap'},

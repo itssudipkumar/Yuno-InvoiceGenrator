@@ -1,0 +1,24 @@
+.expense-summary, .expense-card {
+  background: #fff;
+  border: 1px solid #e2eae1;
+  border-radius: 16px;
+  padding: 20px;
+}
+.expense-summary { display: flex; justify-content: space-between; gap: 16px; margin: 20px 0; color: #60766a; }
+.expense-summary strong, .expense-actions > strong { color: #203832; font-size: 1.15rem; }
+.expense-list { display: grid; gap: 12px; }
+.expense-card { display: flex; justify-content: space-between; gap: 20px; }
+.expense-details { display: grid; gap: 4px; min-width: 0; overflow-wrap: anywhere; }
+.expense-details span { color: #60766a; font-size: 13px; }
+.expense-actions { display: grid; justify-items: end; align-content: start; gap: 10px; }
+.expense-actions div { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px; }
+.expense-actions button, .expense-actions a { padding: 0; border: 0; background: none; color: #315d50; font: inherit; font-size: 13px; text-decoration: underline; cursor: pointer; }
+.expense-actions button:disabled { opacity: .5; cursor: not-allowed; }
+.page-expenses .modal-card { max-height: calc(100dvh - 2rem); overflow-y: auto; }
+.page-expenses .modal-form label { margin: 0; }
+.page-expenses .modal-form label span { color: #718079; font-size: 11px; }
+@media (max-width: 600px) {
+  .expense-card { flex-direction: column; gap: 12px; }
+  .expense-actions { justify-items: start; }
+  .expense-actions div { justify-content: flex-start; }
+}

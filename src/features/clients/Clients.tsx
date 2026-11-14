@@ -4,8 +4,7 @@ import Nav from '../../components/layout/Nav'
 import type { Client } from '../../utils/invoice'
 import { getClients, saveClient, deleteClient } from '../../utils/invoice'
 import { createId } from '../../utils/id'
-
-type Page = 'landing' | 'login' | 'dashboard' | 'create-invoice' | 'clients' | 'account'
+import type { Page } from '../../App'
 
 export default function Clients({ nav }: { nav: (p: Page) => void }) {
   const { user } = useAuth()
